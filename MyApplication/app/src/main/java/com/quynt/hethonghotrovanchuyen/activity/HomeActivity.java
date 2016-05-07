@@ -15,6 +15,7 @@ import com.quynt.hethonghotrovanchuyen.fragment.OwnerHomeFragment;
 import com.quynt.hethonghotrovanchuyen.fragment.ShipperHistoryFragment;
 import com.quynt.hethonghotrovanchuyen.fragment.ShipperOtherFragment;
 import com.quynt.hethonghotrovanchuyen.fragment.ShipperPagerFragment;
+import com.quynt.hethonghotrovanchuyen.utils.APIClient;
 import com.quynt.hethonghotrovanchuyen.utils.Const;
 
 import butterknife.Bind;
@@ -27,7 +28,7 @@ import butterknife.Bind;
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     Menu mCurrentMenu;
-    private int user;
+    private int mAccountType;
     @Bind(R.id.tab_host)
     FragmentTabHost mTabHost;
 
@@ -38,17 +39,15 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
-        Bundle bundle = getIntent().getExtras();
-
-        user = bundle.getInt("user");
+        mAccountType = Integer.parseInt(APIClient.getAccountType(HomeActivity.this));
         mTabHost.setup(this, getSupportFragmentManager(), R.id.tab_content);
 
-        if (user == Const.OWNER) {
+        if (mAccountType == Const.OWNER) {
             mTabHost.addTab(mTabHost.newTabSpec(Menu.HISTORY.getCode()).setIndicator(Menu.HISTORY.name()), HistoryFragment.class, null);
             mTabHost.addTab(mTabHost.newTabSpec(Menu.HOME.getCode()).setIndicator(Menu.HOME.name()), OwnerHomeFragment.class, null);
             mTabHost.addTab(mTabHost.newTabSpec(Menu.MYPAGE.getCode()).setIndicator(Menu.MYPAGE.name()), MyPageFragment.class, null);
             mTabHost.addTab(mTabHost.newTabSpec(Menu.OTHER.getCode()).setIndicator(Menu.OTHER.name()), OtherFragment.class, null);
-        } else if (user == Const.SHIPPER) {
+        } else if (mAccountType == Const.SHIPPER) {
             mTabHost.addTab(mTabHost.newTabSpec(Menu.HISTORY.getCode()).setIndicator(Menu.HISTORY.name()), ShipperHistoryFragment.class, null);
             mTabHost.addTab(mTabHost.newTabSpec(Menu.HOME.getCode()).setIndicator(Menu.HOME.name()), HomeFragment.class, null);
             mTabHost.addTab(mTabHost.newTabSpec(Menu.MYPAGE.getCode()).setIndicator(Menu.MYPAGE.name()), ShipperPagerFragment.class, null);
@@ -138,6 +137,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             this.code = code;
             this.idButton = idButton;
         }
+
         public String getCode() {
             return code;
         }

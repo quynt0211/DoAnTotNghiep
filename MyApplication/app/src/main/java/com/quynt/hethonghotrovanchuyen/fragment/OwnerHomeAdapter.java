@@ -5,30 +5,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.quynt.hethonghotrovanchuyen.R;
+import com.quynt.hethonghotrovanchuyen.model.PackageModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * PRESENA_Android
- * <p/>
+ * <p>
  * Created by Paditech on 19/04/2016.
  * Copyright (c) 2015 Paditech. All rights reserved.
  */
 public class OwnerHomeAdapter extends BaseAdapter {
     private Context mContext;
 
+    private List<PackageModel> mPackages;
+
     public OwnerHomeAdapter(Context mContext) {
         this.mContext = mContext;
+        mPackages = new ArrayList<PackageModel>();
+    }
+
+    public void setPackages(List<PackageModel> packages) {
+        this.mPackages = packages;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return 15;
+        return mPackages.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return "Owner Home Adapter";
+    public PackageModel getItem(int position) {
+        return mPackages.get(position);
     }
 
     @Override
@@ -36,11 +52,78 @@ public class OwnerHomeAdapter extends BaseAdapter {
         return position;
     }
 
+    private StringBuilder convertFeture(PackageModel mPackage) {
+        StringBuilder feture = new StringBuilder();
+        if (mPackage.isSample()) {
+            feture.append(" Hàng Mẫu Vật,");
+        }
+        if (mPackage.isBulky()) {
+            feture.append(" Hàng Cồng Kềnh,");
+        }
+        if (mPackage.isFlammable()) {
+            feture.append(" Hàng Dễ Cháy,");
+        }
+        if (mPackage.isFragile()) {
+            feture.append(" Hàng Dễ Vỡ,");
+        }
+        if (mPackage.isHeavy()) {
+            feture.append(" Hàng Nặng");
+        }
+        return feture;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.owner_home_item, null);
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
+
+        viewHolder.mFeture.setText(convertFeture(mPackages.get(position)));
+        viewHolder.mOwnerName.setText(mPackages.get(position).getmOwnerName());
+        viewHolder.mDescrition.setText(mPackages.get(position).getmDescription());
+        viewHolder.mEndLocation.setText(mPackages.get(position).getmEndLocation());
+        viewHolder.mPackageName.setText(mPackages.get(position).getmPackageName());
+        viewHolder.mStatus.setText(mPackages.get(position).getmStatus());
+        viewHolder.mStartLocation.setText(mPackages.get(position).getmStartLocation());
+        viewHolder.mCreateTime.setText(mPackages.get(position).getmCreateTime());
         return convertView;
+    }
+
+
+    public static class ViewHolder {
+        @Bind(R.id.owner_home_item_owner_name)
+        TextView mOwnerName;
+
+        @Bind(R.id.owner_home_item_status)
+        TextView mStatus;
+
+        @Bind(R.id.owner_home_item_package_name)
+        TextView mPackageName;
+
+        @Bind(R.id.owner_home_item_start_location)
+        TextView mStartLocation;
+
+        @Bind(R.id.owner_home_item_end_location)
+        TextView mEndLocation;
+
+        @Bind(R.id.owner_home_item_feture)
+        TextView mFeture;
+
+        @Bind(R.id.owner_home_item_description)
+        TextView mDescrition;
+
+        @Bind(R.id.owner_home_item_create_time)
+        TextView mCreateTime;
+
+        ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+
     }
 }

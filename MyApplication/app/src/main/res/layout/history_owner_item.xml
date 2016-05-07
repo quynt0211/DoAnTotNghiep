@@ -14,9 +14,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ten Goi Hang" />
+            android:text="Tên Gói Hàng" />
 
         <TextView
+            android:id="@+id/history_owner_item_package_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -33,9 +34,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Noi Gui" />
+            android:text="Nơi Gửi" />
 
         <TextView
+            android:id="@+id/history_owner_item_start_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,9 +54,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Noi Nhan" />
+            android:text="Nơi Nhận" />
 
         <TextView
+            android:id="@+id/history_owner_item_end_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -71,9 +74,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Trang Thai" />
+            android:text="Trạng Thái" />
 
         <TextView
+            android:id="@+id/history_owner_item_status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -90,9 +94,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Vi Tri Hien Tai" />
+            android:text="Vị Trí Hiện Tại" />
 
         <TextView
+            android:id="@+id/history_owner_item_current_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -109,9 +114,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nguoi di giao" />
+            android:text="Người Đi Giao" />
 
         <TextView
+            android:id="@+id/history_owner_item_shipper"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -128,9 +134,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Lan Cuoi Cap Nhat" />
+            android:text="Lần Cuối Cập Nhật" />
 
         <TextView
+            android:id="@+id/history_owner_item_update_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -144,6 +151,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/history_owner_item_change_requirement"
             android:layout_marginRight="10dp"
             android:textColor="@color/white"
             android:layout_width="0dp"
@@ -153,6 +161,7 @@
             android:text="Sửa yêu cầu giao hàng" />
 
         <Button
+            android:id="@+id/history_owner_item_delete_requirement"
             android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -168,6 +177,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/history_owner_item_view_shipper"
             android:layout_marginRight="10dp"
             android:textColor="@color/white"
             android:layout_width="0dp"
@@ -177,6 +187,7 @@
             android:text="Danh Sách Nhận Đi Giao" />
 
         <Button
+            android:id="@+id/history_owner_item_view_auction"
             android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

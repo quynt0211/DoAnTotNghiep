@@ -7,6 +7,6 @@ package com.quynt.hethonghotrovanchuyen.utils;
  * Copyright (c) 2015 Paditech. All rights reserved.
  */
 public class Const {
-    public static final int OWNER = 10;
-    public static final int SHIPPER = 20;
+    public static final int OWNER = 1;
+    public static final int SHIPPER = 2;
 }

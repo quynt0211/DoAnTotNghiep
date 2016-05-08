@@ -2,6 +2,7 @@ package com.quynt.hethonghotrovanchuyen.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -43,6 +44,7 @@ public class LoginActivity extends BaseActivity {
     private String mPhone;
     private String mPassword;
 
+    private static final int TIME_OUT = 5000;
     @Override
     protected int getContentView() {
         return R.layout.activity_login;
@@ -132,10 +134,16 @@ public class LoginActivity extends BaseActivity {
                                 @Override
                                 public void run() {
                                     DialogUtils.showMessageDialog(LoginActivity.this, "Đăng Nhập Thành Công");
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            goToHome();
+                                        }
+                                    }, TIME_OUT);
                                 }
                             });
 
-                            goToHome();
+
 
                         } else {
                             LoginShipperResponse loginShipperResponse = new Gson().fromJson(body, LoginShipperResponse.class);
@@ -143,7 +151,18 @@ public class LoginActivity extends BaseActivity {
                             APIClient.getInstance().saveLoginAccount(LoginActivity.this, loginShipperResponse.getShipper());
                             Log.d("accountid", APIClient.getShipperAccount(LoginActivity.this).getId() + "");
                             Log.d("accountType", APIClient.getAccountType(LoginActivity.this));
-                            goToHome();
+                            LoginActivity.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    DialogUtils.showMessageDialog(LoginActivity.this, "Đăng Nhập Thành Công");
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            goToHome();
+                                        }
+                                    }, TIME_OUT);
+                                }
+                            });
                         }
                     }
                 }

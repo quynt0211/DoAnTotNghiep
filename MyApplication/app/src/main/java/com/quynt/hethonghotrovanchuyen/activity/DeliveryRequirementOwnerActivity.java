@@ -8,10 +8,9 @@ import com.quynt.hethonghotrovanchuyen.adapter.DeliveryRequirementOwnerAdapter;
 import butterknife.Bind;
 
 /**
- * PRESENA_Android
- * <p>
- * Created by Paditech on 27/04/2016.
- * Copyright (c) 2015 Paditech. All rights reserved.
+ * He Thong Ho Tro Van Chuyen
+ * <p/>
+ * Created by QuyNT on 12/03/2016.
  */
 public class DeliveryRequirementOwnerActivity extends BaseActivity {
     @Bind(R.id.delivery_requirement_owner_list_view)

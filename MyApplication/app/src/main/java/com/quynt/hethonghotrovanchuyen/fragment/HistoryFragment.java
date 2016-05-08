@@ -1,9 +1,11 @@
 package com.quynt.hethonghotrovanchuyen.fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
 import com.quynt.hethonghotrovanchuyen.activity.AuctionOwnerActivity;
+import com.quynt.hethonghotrovanchuyen.activity.ChangeDeliveryRequirementActivity;
 import com.quynt.hethonghotrovanchuyen.activity.CreateDeliveryRequirementActivity;
 import com.quynt.hethonghotrovanchuyen.activity.DeliveryRequirementOwnerActivity;
 import com.quynt.hethonghotrovanchuyen.adapter.OwnerHistoryAdapter;
@@ -19,12 +22,14 @@ import com.quynt.hethonghotrovanchuyen.model.PackageModel;
 import com.quynt.hethonghotrovanchuyen.model.response.ErrorResponse;
 import com.quynt.hethonghotrovanchuyen.model.response.OwnerHistoryResponse;
 import com.quynt.hethonghotrovanchuyen.utils.APIClient;
+import com.quynt.hethonghotrovanchuyen.utils.Const;
 import com.quynt.hethonghotrovanchuyen.utils.DialogUtils;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
@@ -107,9 +112,23 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
     }
 
     @Override
-    public void onChangeRequirement() {
-        Intent intent = new Intent(getBaseActivity(), CreateDeliveryRequirementActivity.class);
-        startActivity(intent);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(requestCode == Const.HISTORY_CHANGE_REQUIREMENT){
+            if(resultCode == Activity.RESULT_OK){
+                getHistory();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onChangeRequirement(PackageModel packageModel) {
+        Intent intent = new Intent(getBaseActivity(), ChangeDeliveryRequirementActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("package_model", packageModel);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, Const.HISTORY_CHANGE_REQUIREMENT);
     }
 
     @Override
@@ -229,8 +248,9 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
                 if (response.isSuccessful()) {
                     String body = response.body().string();
                     final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
+                    Log.d("history_response", body);
                     Log.d("errorresponse", errorResponse.getMessage() + errorResponse.hasError());
-                    if (!errorResponse.hasError()) {
+                    if (errorResponse.hasError()) {
                         getBaseActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

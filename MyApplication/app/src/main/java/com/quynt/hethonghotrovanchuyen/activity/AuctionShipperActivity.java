@@ -6,12 +6,10 @@ import com.quynt.hethonghotrovanchuyen.R;
 import com.quynt.hethonghotrovanchuyen.adapter.AuctionShipperAdapter;
 
 import butterknife.Bind;
-
 /**
- * PRESENA_Android
+ * He Thong Ho Tro Van Chuyen
  * <p/>
- * Created by Paditech on 21/04/2016.
- * Copyright (c) 2015 Paditech. All rights reserved.
+ * Created by QuyNT on 12/03/2016.
  */
 public class AuctionShipperActivity extends BaseActivity {
     @Bind(R.id.auction_shipper)

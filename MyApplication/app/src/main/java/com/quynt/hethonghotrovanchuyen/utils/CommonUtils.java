@@ -10,9 +10,8 @@ import android.widget.EditText;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
- * Created by Paditech on 3/24/2016.
- * Copyright (c) 2015 Paditech. All rights reserved.
+ * <p/>
+ * Created by QuyNT on 12/03/2016.
  */
 public class CommonUtils {
 

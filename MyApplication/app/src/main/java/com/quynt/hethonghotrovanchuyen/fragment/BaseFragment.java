@@ -19,7 +19,6 @@ import butterknife.ButterKnife;
  * He Thong Ho Tro Van Chuyen
  * <p/>
  * Created by QuyNT on 12/04/2016.
- * Copyright (c) 2015 Paditech. All rights reserved.
  */
 public abstract class BaseFragment extends Fragment {
 

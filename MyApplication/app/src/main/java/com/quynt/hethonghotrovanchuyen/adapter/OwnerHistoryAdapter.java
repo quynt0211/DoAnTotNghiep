@@ -18,10 +18,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * PRESENA_Android
- * <p>
- * Created by Paditech on 18/04/2016.
- * Copyright (c) 2015 Paditech. All rights reserved.
+ * He Thong Ho Tro Van Chuyen
+ * <p/>
+ * Created by QuyNT on 12/03/2016.
  */
 public class OwnerHistoryAdapter extends BaseAdapter {
     private Context mContext;
@@ -73,7 +72,7 @@ public class OwnerHistoryAdapter extends BaseAdapter {
         viewHolder.mChangeRequirement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickListenner.onChangeRequirement();
+                onClickListenner.onChangeRequirement(packageModel);
             }
         });
 
@@ -145,7 +144,7 @@ public class OwnerHistoryAdapter extends BaseAdapter {
     }
 
     public interface OnClickListenner {
-        void onChangeRequirement();
+        void onChangeRequirement( PackageModel packageModel);
 
         void onDeleteRequirement(int idPackage, int position);
 

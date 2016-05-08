@@ -12,10 +12,9 @@ import butterknife.Bind;
 import butterknife.OnClick;
 
 /**
- * PRESENA_Android
+ * He Thong Ho Tro Van Chuyen
  * <p/>
- * Created by Paditech on 20/04/2016.
- * Copyright (c) 2015 Paditech. All rights reserved.
+ * Created by QuyNT on 12/03/2016.
  */
 public class ShipperOtherFragment extends BaseFragment {
 

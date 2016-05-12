@@ -61,6 +61,11 @@
             android:name=".activity.ChangeDeliveryRequirementActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.AuctionActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

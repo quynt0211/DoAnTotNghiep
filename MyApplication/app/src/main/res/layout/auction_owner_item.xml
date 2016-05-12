@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -20,13 +21,13 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/auction_owner_item_name"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Giao Hàng 24h"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -48,15 +49,43 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/auction_owner_item_phone"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Nguyễn Trọng Quý"
             android:textSize="16sp" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Đi Giao Được Các Mặt Hàng"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/auction_owner_item_can_delivery"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,13 +104,13 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/auction_owner_item_rate"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="30 000"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -102,24 +131,25 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/auction_owner_item_auction_date"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="15h00 05-04-2016"
             android:textSize="16sp" />
     </LinearLayout>
 
     <Button
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:id="@+id/auction_owner_item_allowed_delivery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/theme_color_rounded_button"
         android:text="Cho Phép Đi Giao"
         android:textColor="@color/white" />

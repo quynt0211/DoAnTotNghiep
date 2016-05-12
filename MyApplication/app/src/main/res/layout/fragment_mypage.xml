@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/mypage_layout_root"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -16,15 +17,6 @@
             android:text="Thông Tin Cá Nhân"
             android:textColor="@color/white"
             android:textSize="16sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            android:background="@android:color/transparent"
-            android:text="Cập Nhật"
-            android:textColor="@color/white" />
     </RelativeLayout>
 
     <ScrollView
@@ -65,6 +57,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/mypage_phone"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -95,13 +88,13 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/mypage_name"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/white_background"
-                    android:inputType="numberDecimal"
                     android:singleLine="true"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -125,13 +118,13 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/mypage_address"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/white_background"
-                    android:inputType="numberDecimal"
                     android:singleLine="true"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -155,6 +148,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/mypage_password"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -185,6 +179,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/mypage_confirm_pass"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -204,17 +199,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:background="@color/colorPrimary"
-                    android:gravity="center"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:text="Hủy"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-                <Button
+                    android:id="@+id/mypage_update_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginLeft="10dp"

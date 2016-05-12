@@ -54,13 +54,13 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/create_delivery_requirement_package_name"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/white_background"
-                    android:inputType="numberDecimal"
                     android:singleLine="true"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -84,13 +84,13 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/create_delivery_requirement_start_location"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/white_background"
-                    android:inputType="numberDecimal"
                     android:singleLine="true"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -114,13 +114,13 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/create_delivery_requirement_end_location"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/white_background"
-                    android:inputType="numberDecimal"
                     android:singleLine="true"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -141,6 +141,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/create_delivery_requirement_fragile_cb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -149,6 +150,7 @@
                     android:textColor="@color/black" />
 
                 <CheckBox
+                    android:id="@+id/create_delivery_requirement_isinflammable"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -163,6 +165,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/create_delivery_requirement_isHeavy"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -171,6 +174,7 @@
                     android:textColor="@color/black" />
 
                 <CheckBox
+                    android:id="@+id/create_delivery_requirement_isSample"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -185,6 +189,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/create_delivery_requirement_isbulky"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -226,6 +231,7 @@
                 </RelativeLayout>
 
                 <EditText
+                    android:id="@+id/create_delivery_requirement_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -251,11 +257,43 @@
                     android:layout_weight="1"
                     android:background="@color/back_ground"
                     android:gravity="center"
-                    android:text="Cần Gửi Trước"
+                    android:text="Số Lượng"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/create_delivery_requirement_number"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_background"
+                    android:inputType="numberDecimal"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/back_ground"
+                    android:gravity="center"
+                    android:text="Cân nặng"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/create_delivery_requirement_weigh"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"

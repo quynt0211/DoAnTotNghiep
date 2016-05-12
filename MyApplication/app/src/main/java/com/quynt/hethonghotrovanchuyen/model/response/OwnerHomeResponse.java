@@ -6,10 +6,9 @@ import com.quynt.hethonghotrovanchuyen.model.PackageModel;
 import java.util.List;
 
 /**
- * PRESENA_Android
+ * He Thong Ho Tro Van Chuyen
  * <p/>
- * Created by Paditech on 07/05/2016.
- * Copyright (c) 2015 Paditech. All rights reserved.
+ * Created by QuyNT on 07/05/2016.
  */
 public class OwnerHomeResponse {
     @SerializedName("success")

@@ -57,6 +57,50 @@ public class Shipper {
         return mAddress;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setmName(String mName) {
+        this.mName = mName;
+    }
+
+    public void setmPhoneNumber(String mPhoneNumber) {
+        this.mPhoneNumber = mPhoneNumber;
+    }
+
+    public void setmAddress(String mAddress) {
+        this.mAddress = mAddress;
+    }
+
+    public void setmPassword(String mPassword) {
+        this.mPassword = mPassword;
+    }
+
+    public void setmIntroduce(String mIntroduce) {
+        this.mIntroduce = mIntroduce;
+    }
+
+    public void setmFragile(int mFragile) {
+        this.mFragile = mFragile;
+    }
+
+    public void setmInflammable(int mInflammable) {
+        this.mInflammable = mInflammable;
+    }
+
+    public void setmBulky(int mBulky) {
+        this.mBulky = mBulky;
+    }
+
+    public void setmHeavy(int mHeavy) {
+        this.mHeavy = mHeavy;
+    }
+
+    public void setmSample(int mSample) {
+        this.mSample = mSample;
+    }
+
     public String getmIntroduce(){
         return mIntroduce;
     }
@@ -79,5 +123,9 @@ public class Shipper {
 
     public boolean isSamples(){
         return mSample == 1;
+    }
+
+    public String getpassWord(){
+        return mPassword;
     }
 }

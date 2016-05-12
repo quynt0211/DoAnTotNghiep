@@ -1,23 +1,23 @@
 package com.quynt.hethonghotrovanchuyen.model.response;
 
 import com.google.gson.annotations.SerializedName;
-import com.quynt.hethonghotrovanchuyen.model.PackageModel;
+import com.quynt.hethonghotrovanchuyen.model.Auction;
 
 import java.util.List;
 
 /**
  * He Thong Ho Tro Van Chuyen
  * <p/>
- * Created by QuyNT on 07/05/2016.
+ * Created by QuyNT on 09/05/2016.
  */
-public class OwnerHistoryResponse {
+public class ViewAuctionOwnerAllowedResponse {
     @SerializedName("success")
     private boolean success;
 
     @SerializedName("data")
-    private List<PackageModel> mPackages;
+    private List<Auction> mAuctions;
 
-    public List<PackageModel> getPackage(){
-        return mPackages;
+    public List<Auction> getAuctions() {
+        return mAuctions;
     }
 }

@@ -3,6 +3,7 @@ package com.quynt.hethonghotrovanchuyen.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -53,6 +54,8 @@ public class RegisterOwnerActivity extends BaseActivity {
 
     @Bind(R.id.register_owner_confirm_password)
     protected EditText mConfirmPasswordExt;
+
+    private static final int TIME_OUT = 3000;
 
     @Override
     protected int getContentView() {
@@ -120,15 +123,29 @@ public class RegisterOwnerActivity extends BaseActivity {
                         dialog.dismiss();
                     }
                 });
+
                 String body = response.body().string();
+                Log.d("body_register", body);
                 final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
 
                 if (!errorResponse.hasError()) {
                     RegisterOwnerResponse registerOwnerResponse = new Gson().fromJson(body, RegisterOwnerResponse.class);
                     APIClient.getInstance().saveAccountType(RegisterOwnerActivity.this, Const.OWNER);
                     APIClient.getInstance().saveLoginAccount(RegisterOwnerActivity.this, registerOwnerResponse.getOwner());
+                    Log.d("owneraccount", String.valueOf(APIClient.getOwnerAccount(RegisterOwnerActivity.this).getName()) + " name ");
+                    RegisterOwnerActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            DialogUtils.showMessageDialog(RegisterOwnerActivity.this, "Đăng Ký Thành Công");
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    goToHome();
+                                }
+                            },TIME_OUT);
 
-                    goToHome();
+                        }
+                    });
                 } else {
                     RegisterOwnerActivity.this.runOnUiThread(new Runnable() {
                         @Override

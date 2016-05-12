@@ -1,25 +1,23 @@
 package com.quynt.hethonghotrovanchuyen.model.response;
 
 import com.google.gson.annotations.SerializedName;
-import com.quynt.hethonghotrovanchuyen.model.Shipper;
+import com.quynt.hethonghotrovanchuyen.model.ReceiveDelivery;
+
+import java.util.List;
 
 /**
  * He Thong Ho Tro Van Chuyen
  * <p/>
  * Created by QuyNT on 07/05/2016.
  */
-public class LoginShipperResponse {
-
+public class ReceiveDeliveryResponse {
     @SerializedName("success")
     private boolean success;
 
-    @SerializedName("accountType")
-    private int mAccountType;
-
     @SerializedName("data")
-    private Shipper shipper;
+    private List<ReceiveDelivery> mReceiveDeliveries;
 
-    public Shipper getShipper(){
-        return shipper;
+    public List<ReceiveDelivery> getmReceiveDeliveries() {
+        return mReceiveDeliveries;
     }
 }

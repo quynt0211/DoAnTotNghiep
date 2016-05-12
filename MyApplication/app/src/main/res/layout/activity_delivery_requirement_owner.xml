@@ -34,7 +34,8 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Hàng Quần Áo"
+
+            android:id="@+id/delivery_requirement_owner_package_name"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -55,13 +56,13 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/delivery_requirement_owner_start_location"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="235 Bạch Mai"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -82,13 +83,13 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/delivery_requirement_owner_end_location"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="01 Bạch Mai"
             android:textSize="16sp" />
     </LinearLayout>
 

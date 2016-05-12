@@ -54,6 +54,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/register_shipper_phonenumber"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -84,6 +85,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/register_shipper_name"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -113,6 +115,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/register_shipper_address"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -139,6 +142,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/register_shipper_isFragilecb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -147,6 +151,7 @@
                     android:textColor="@color/black" />
 
                 <CheckBox
+                    android:id="@+id/register_shipper_isinflammableCb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -161,6 +166,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/register_shipper_isHeavyCb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -169,6 +175,7 @@
                     android:textColor="@color/black" />
 
                 <CheckBox
+                    android:id="@+id/register_shipper_isSampleCb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -183,6 +190,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/register_shipper_isbulkyCb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -224,6 +232,7 @@
                 </RelativeLayout>
 
                 <EditText
+                    android:id="@+id/register_shipper_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -254,6 +263,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/register_shipper_password"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -284,6 +294,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/register_shipper_confirm_password"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -303,6 +314,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/register_shipper_cancel_btn"
                     android:layout_width="80dp"
                     android:layout_height="35dp"
                     android:background="@color/colorPrimary"
@@ -312,6 +324,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/register_shipper_register_btn"
                     android:layout_width="80dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="10dp"

@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p/>
+ * <p>
  * Created by QuyNT on 12/03/2016.
  */
 public class PackageModel implements Serializable {
@@ -73,6 +73,20 @@ public class PackageModel implements Serializable {
 
     @SerializedName("nameshipper")
     private String mShipperName;
+
+    @SerializedName("PhoneNumber")
+    private String mOwnerPhone;
+
+    @SerializedName("shipperphone")
+    private String mShipperPhone;
+
+    public String getShipperPhone() {
+        return mShipperPhone;
+    }
+
+    public String getOwnerPhone() {
+        return mOwnerPhone;
+    }
 
     public int getmIdOwner() {
         return mIdOwner;
@@ -226,7 +240,7 @@ public class PackageModel implements Serializable {
         this.mOwnerName = mOwnerName;
     }
 
-    public String getShipperName(){
+    public String getShipperName() {
         return mShipperName;
     }
 }

@@ -45,6 +45,10 @@ public class Owner {
         return mPassword;
     }
 
+    public String getName(){
+        return mName;
+    }
+
     public void setmPassword(String mPassword) {
         this.mPassword = mPassword;
     }

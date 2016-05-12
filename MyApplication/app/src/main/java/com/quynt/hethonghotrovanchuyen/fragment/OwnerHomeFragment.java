@@ -84,6 +84,10 @@ public class OwnerHomeFragment extends BaseFragment {
                         getBaseActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                int size = ownerHomeResponse.getPackage().size();
+                                if(size == 0 ){
+                                    DialogUtils.showMessageDialog(getBaseActivity(), "Không Có Gói Hàng Mới Nào");
+                                }
                                 ownerHomeAdapter.setPackages(ownerHomeResponse.getPackage());
                             }
                         });

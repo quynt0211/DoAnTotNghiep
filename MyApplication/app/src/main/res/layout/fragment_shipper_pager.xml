@@ -17,15 +17,6 @@
             android:text="Đăng Ký Đại Lý Vận Chuyển"
             android:textColor="@color/white"
             android:textSize="16sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            android:background="@android:color/transparent"
-            android:text="Cập Nhật"
-            android:textColor="@color/white" />
     </RelativeLayout>
 
 
@@ -67,6 +58,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/shipper_page_phone"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -97,6 +89,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/shipper_pager_name"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -126,6 +119,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/shipper_pager_address"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -152,6 +146,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/shipper_pager_isFragileCb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -160,6 +155,7 @@
                     android:textColor="@color/black" />
 
                 <CheckBox
+                    android:id="@+id/shipper_pager_isinflammableCb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -174,6 +170,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/shipper_pager_isHeavyCb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -182,6 +179,7 @@
                     android:textColor="@color/black" />
 
                 <CheckBox
+                    android:id="@+id/shipper_pager_isSampleCb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -196,6 +194,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/shipper_pager_isbulkyCb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -237,6 +236,7 @@
                 </RelativeLayout>
 
                 <EditText
+                    android:id="@+id/shipper_pager_introduce"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -267,6 +267,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/shipper_pager_password"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -297,6 +298,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/shipper_pager_confirm_password"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
@@ -316,17 +318,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:background="@color/colorPrimary"
-                    android:gravity="center"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:text="Hủy"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-                <Button
+                    android:id="@+id/shipper_pager_update_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginLeft="10dp"

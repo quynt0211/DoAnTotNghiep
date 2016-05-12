@@ -5,12 +5,14 @@ import android.view.View;
 
 import com.quynt.hethonghotrovanchuyen.R;
 import com.quynt.hethonghotrovanchuyen.activity.CreateDeliveryRequirementActivity;
+import com.quynt.hethonghotrovanchuyen.activity.LoginActivity;
+import com.quynt.hethonghotrovanchuyen.utils.APIClient;
 
 import butterknife.OnClick;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p/>
+ * <p>
  * Created by QuyNT on 15/03/2016.
  */
 public class OtherFragment extends BaseFragment {
@@ -29,5 +31,18 @@ public class OtherFragment extends BaseFragment {
         Intent intent = new Intent(getBaseActivity(), CreateDeliveryRequirementActivity.class);
         startActivity(intent);
     }
+
+    @OnClick(R.id.other_logout)
+    protected void logout() {
+        APIClient.removeAccount(getBaseActivity());
+        goToLogin();
+    }
+
+    private void goToLogin() {
+        Intent intent = new Intent(getBaseActivity(), LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
 
 }

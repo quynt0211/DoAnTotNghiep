@@ -14,9 +14,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ten Nguoi Dang" />
+            android:text="Tên Người đăng" />
 
         <TextView
+            android:id="@+id/post_item_owner_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -24,18 +25,39 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Trang Thai" />
+            android:text="Số Điện Thoại" />
 
         <TextView
+            android:id="@+id/post_item_owner_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nguyen Trong Quy" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Trạng Thái" />
+
+        <TextView
+            android:id="@+id/post_item_status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -43,18 +65,19 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ten Goi Hang" />
+            android:text="Tên Gói Hàng" />
 
         <TextView
+            android:id="@+id/post_item_package_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -62,42 +85,79 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Gui Tu: 235 Bach Mai" />
+            android:layout_weight="1"
+            android:text="Gửi Từ" />
 
         <TextView
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
+            android:id="@+id/post_item_start_location"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Den: 235 Pho Hue" />
-
-        <TextView
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ngay Dang 01/04/2016" />
+            android:layout_weight="1"
+            android:text="Hang Quan Ao" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Đến:" />
+
+        <TextView
+            android:id="@+id/post_item_end_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hang Quan Ao" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Thời Gian Đăng" />
+
+        <TextView
+            android:id="@+id/post_item_create_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hang Quan Ao" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Dac Tinh Goi Hang" />
+            android:text="Đặc Tính Gói Hàng" />
 
         <TextView
+            android:id="@+id/post_item_feture"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -106,18 +166,19 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Mo Ta Them" />
+            android:text="Mô Tả Thêm" />
 
         <TextView
+            android:id="@+id/post_item_description"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -126,7 +187,7 @@
     </LinearLayout>
 
     <Button
-        android:textColor="@color/white"
+        android:id="@+id/post_item_delivery_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -134,5 +195,6 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/red_background_rounded"
-        android:text="Nhan Di Giao Hang" />
+        android:text="Nhận Đi Giao Hàng"
+        android:textColor="@color/white" />
 </LinearLayout>

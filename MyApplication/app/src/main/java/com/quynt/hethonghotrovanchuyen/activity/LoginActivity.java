@@ -30,7 +30,7 @@ import butterknife.OnClick;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p/>
+ * <p>
  * Created by QuyNT on 12/04/2016.
  */
 public class LoginActivity extends BaseActivity {
@@ -44,7 +44,8 @@ public class LoginActivity extends BaseActivity {
     private String mPhone;
     private String mPassword;
 
-    private static final int TIME_OUT = 5000;
+    private static final int TIME_OUT = 2000;
+
     @Override
     protected int getContentView() {
         return R.layout.activity_login;
@@ -55,6 +56,10 @@ public class LoginActivity extends BaseActivity {
         CommonUtils.dismissSoftKeyboard(findViewById(R.id.login_activity_layout_root), this);
         mPhone = "";
         mPassword = "";
+
+        if (APIClient.isLogin(this)) {
+            goToHome();
+        }
     }
 
     @OnClick(R.id.login_register_owner_button)
@@ -71,6 +76,7 @@ public class LoginActivity extends BaseActivity {
 
     protected void goToHome() {
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
@@ -144,7 +150,6 @@ public class LoginActivity extends BaseActivity {
                             });
 
 
-
                         } else {
                             LoginShipperResponse loginShipperResponse = new Gson().fromJson(body, LoginShipperResponse.class);
                             APIClient.saveAccountType(LoginActivity.this, Const.SHIPPER);
@@ -171,7 +176,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     @OnClick(R.id.activity_login_login_button)
-    protected void clickLogin(){
+    protected void clickLogin() {
         login();
     }
 

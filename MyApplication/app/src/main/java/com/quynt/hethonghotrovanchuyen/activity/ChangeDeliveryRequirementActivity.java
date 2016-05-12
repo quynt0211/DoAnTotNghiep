@@ -131,8 +131,14 @@ public class ChangeDeliveryRequirementActivity extends BaseActivity {
         mStartLocation = mStartLocationExt.getText().toString().trim();
         mEndLocation = mEndLocationExt.getText().toString().trim();
         mDescription = mDescriptionExt.getText().toString().trim();
-        mNumber = Integer.parseInt(mNumberExt.getText().toString());
-        mWeigh = Double.parseDouble(mWeighExt.getText().toString());
+        if (StringUtils.isEmpty(mNumberExt.getText().toString())) {
+            mNumber = 0;
+        } else
+            mNumber = Integer.parseInt(mNumberExt.getText().toString());
+        if (StringUtils.isEmpty(mWeighExt.getText().toString()))
+            mWeigh = 0.0;
+        else
+            mWeigh = Double.parseDouble(mWeighExt.getText().toString());
 
         if (mBulkyCb.isChecked()) {
             mBulky = 1;

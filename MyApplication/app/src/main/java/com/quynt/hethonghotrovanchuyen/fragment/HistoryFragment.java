@@ -15,7 +15,6 @@ import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
 import com.quynt.hethonghotrovanchuyen.activity.AuctionOwnerActivity;
 import com.quynt.hethonghotrovanchuyen.activity.ChangeDeliveryRequirementActivity;
-import com.quynt.hethonghotrovanchuyen.activity.CreateDeliveryRequirementActivity;
 import com.quynt.hethonghotrovanchuyen.activity.DeliveryRequirementOwnerActivity;
 import com.quynt.hethonghotrovanchuyen.adapter.OwnerHistoryAdapter;
 import com.quynt.hethonghotrovanchuyen.model.PackageModel;
@@ -29,7 +28,6 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
@@ -39,7 +37,7 @@ import butterknife.Bind;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
+ * <p/>
  * Created by QuyNT on 15/03/2016.
  */
 public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter.OnClickListenner {
@@ -114,8 +112,8 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if(requestCode == Const.HISTORY_CHANGE_REQUIREMENT){
-            if(resultCode == Activity.RESULT_OK){
+        if (requestCode == Const.HISTORY_CHANGE_REQUIREMENT) {
+            if (resultCode == Activity.RESULT_OK) {
                 getHistory();
             }
         }
@@ -133,21 +131,26 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
 
     @Override
     public void onDeleteRequirement(int idPackage, int position) {
-        //showDialogConfirm(idPackage, position);
         remove(idPackage, position);
     }
 
 
     @Override
-    public void onViewShipper() {
+    public void onViewShipper(PackageModel packageModel) {
         Intent intent = new Intent(getBaseActivity(), DeliveryRequirementOwnerActivity.class);
-        startActivity(intent);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("package_model", packageModel);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, Const.HISTORY_VIEW_SHIPPER);
     }
 
     @Override
-    public void onViewAuction() {
+    public void onViewAuction(PackageModel packageModel) {
         Intent intent = new Intent(getBaseActivity(), AuctionOwnerActivity.class);
-        startActivity(intent);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("package_model", packageModel);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, Const.HISTORY_VIEW_AUCTION);
     }
 
     private void getHistory() {
@@ -193,6 +196,10 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
                             @Override
                             public void run() {
                                 mPackageHistory = ownerHistoryResponse.getPackage();
+                                int size = mPackageHistory.size();
+                                if (size == 0) {
+                                    DialogUtils.showMessageDialog(getBaseActivity(), "Bạn Chưa Đăng Gói Hàng Nào");
+                                }
                                 ownerHistoryAdapter.setPackages(mPackageHistory);
                             }
                         });
@@ -262,7 +269,7 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
                             @Override
                             public void run() {
                                 mPackageHistory.remove(position);
-                                Log.d("history_package", mPackageHistory.size() +" size");
+                                Log.d("history_package", mPackageHistory.size() + " size");
                                 ownerHistoryAdapter.setPackages(mPackageHistory);
                                 DialogUtils.showMessageDialog(getBaseActivity(), errorResponse.getMessage());
                             }

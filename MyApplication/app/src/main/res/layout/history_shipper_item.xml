@@ -18,10 +18,10 @@
             android:text="Tên Gói Hàng" />
 
         <TextView
+            android:id="@+id/shipper_history_package_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Hàng Quần Áo" />
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -37,10 +37,29 @@
             android:text="Người Đăng" />
 
         <TextView
+            android:id="@+id/shipper_history_owner_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nguyễn Trọng Quý" />
+            android:text="Số Điện Thoại" />
+
+        <TextView
+            android:id="@+id/shipper_history_owner_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,10 +75,10 @@
             android:text="Nơi Giử" />
 
         <TextView
+            android:id="@+id/shipper_history_start_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="235 Bạch Mai" />
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -75,10 +94,10 @@
             android:text="Nơi Nhận" />
 
         <TextView
+            android:id="@+id/shipper_history_end_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="235 Phố Huế" />
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout
@@ -94,11 +113,33 @@
             android:text="Trạng Thái" />
 
         <EditText
+            android:id="@+id/shipper_history_status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/white_background"
-            android:hint="Đang đi giao"
+            android:lines="2"
+            android:maxLines="3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Vị Trí Hiện Tại" />
+
+        <EditText
+            android:id="@+id/shipper_history_current_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/white_background"
             android:lines="2"
             android:maxLines="3" />
     </LinearLayout>
@@ -116,10 +157,10 @@
             android:text="Lần cuối cập nhật" />
 
         <TextView
+            android:id="@+id/shipper_history_update_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="15:00" />
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout
@@ -129,7 +170,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/history_shipper_item_update_location"
+            android:id="@+id/shipper_history_item_update_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
@@ -139,7 +180,7 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/history_shipper_item_update_status"
+            android:id="@+id/shipper_history_item_update_status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

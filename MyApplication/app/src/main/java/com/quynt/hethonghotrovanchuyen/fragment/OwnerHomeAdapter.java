@@ -16,10 +16,10 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
- /* He Thong Ho Tro Van Chuyen
- * <p/>
- * Created by QuyNT on 12/03/2016.
- */
+/* He Thong Ho Tro Van Chuyen
+* <p/>
+* Created by QuyNT on 12/03/2016.
+*/
 public class OwnerHomeAdapter extends BaseAdapter {
     private Context mContext;
 
@@ -53,19 +53,19 @@ public class OwnerHomeAdapter extends BaseAdapter {
     private StringBuilder convertFeture(PackageModel mPackage) {
         StringBuilder feture = new StringBuilder();
         if (mPackage.isSample()) {
-            feture.append(" Hàng Mẫu Vật,");
+            feture.append("Hàng Mẫu Vật ");
         }
         if (mPackage.isBulky()) {
-            feture.append(" Hàng Cồng Kềnh,");
+            feture.append("Hàng Cồng Kềnh ");
         }
         if (mPackage.isFlammable()) {
-            feture.append(" Hàng Dễ Cháy,");
+            feture.append("Hàng Dễ Cháy ");
         }
         if (mPackage.isFragile()) {
-            feture.append(" Hàng Dễ Vỡ,");
+            feture.append("Hàng Dễ Vỡ ");
         }
         if (mPackage.isHeavy()) {
-            feture.append(" Hàng Nặng");
+            feture.append("Hàng Nặng");
         }
         return feture;
     }
@@ -87,9 +87,10 @@ public class OwnerHomeAdapter extends BaseAdapter {
         viewHolder.mDescrition.setText(mPackages.get(position).getmDescription());
         viewHolder.mEndLocation.setText(mPackages.get(position).getmEndLocation());
         viewHolder.mPackageName.setText(mPackages.get(position).getmPackageName());
-        viewHolder.mStatus.setText(mPackages.get(position).getmStatus());
+    //    viewHolder.mStatus.setText(mPackages.get(position).getmStatus());
         viewHolder.mStartLocation.setText(mPackages.get(position).getmStartLocation());
         viewHolder.mCreateTime.setText(mPackages.get(position).getmCreateTime());
+        viewHolder.mOwnerPhone.setText(mPackages.get(position).getOwnerPhone());
         return convertView;
     }
 
@@ -98,8 +99,8 @@ public class OwnerHomeAdapter extends BaseAdapter {
         @Bind(R.id.owner_home_item_owner_name)
         TextView mOwnerName;
 
-        @Bind(R.id.owner_home_item_status)
-        TextView mStatus;
+//        @Bind(R.id.owner_home_item_status)
+//        TextView mStatus;
 
         @Bind(R.id.owner_home_item_package_name)
         TextView mPackageName;
@@ -118,6 +119,9 @@ public class OwnerHomeAdapter extends BaseAdapter {
 
         @Bind(R.id.owner_home_item_create_time)
         TextView mCreateTime;
+
+        @Bind(R.id.owner_home_item_owner_phone)
+        TextView mOwnerPhone;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

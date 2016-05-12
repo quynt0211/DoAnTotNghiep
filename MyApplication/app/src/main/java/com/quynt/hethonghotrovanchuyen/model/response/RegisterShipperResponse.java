@@ -5,21 +5,17 @@ import com.quynt.hethonghotrovanchuyen.model.Shipper;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p/>
+ * <p>
  * Created by QuyNT on 07/05/2016.
  */
-public class LoginShipperResponse {
-
+public class RegisterShipperResponse {
     @SerializedName("success")
     private boolean success;
 
-    @SerializedName("accountType")
-    private int mAccountType;
-
     @SerializedName("data")
-    private Shipper shipper;
+    private Shipper mShipper;
 
-    public Shipper getShipper(){
-        return shipper;
+    public Shipper getShipper() {
+        return mShipper;
     }
 }

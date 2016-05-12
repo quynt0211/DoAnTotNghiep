@@ -79,14 +79,14 @@ public class OwnerHistoryAdapter extends BaseAdapter {
         viewHolder.mViewShipper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickListenner.onViewShipper();
+                onClickListenner.onViewShipper(packageModel);
             }
         });
 
         viewHolder.mViewAuction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickListenner.onViewAuction();
+                onClickListenner.onViewAuction(packageModel);
             }
         });
 
@@ -105,6 +105,20 @@ public class OwnerHistoryAdapter extends BaseAdapter {
         viewHolder.mCurrentLocation.setText(packageModel.getmCurrentLocation());
         viewHolder.mUpdateTime.setText(packageModel.getmUpdateTime());
         viewHolder.mShipper.setText(packageModel.getShipperName());
+        viewHolder.mPhoneShipper.setText(packageModel.getShipperPhone());
+
+        if (packageModel.isDelivery()) {
+            viewHolder.mChangeRequirement.setVisibility(View.GONE);
+            viewHolder.mDeleteRequirement.setVisibility(View.GONE);
+            viewHolder.mViewAuction.setVisibility(View.GONE);
+            viewHolder.mViewShipper.setVisibility(View.GONE);
+        } else {
+            viewHolder.mChangeRequirement.setVisibility(View.VISIBLE);
+            viewHolder.mDeleteRequirement.setVisibility(View.VISIBLE);
+            viewHolder.mViewAuction.setVisibility(View.VISIBLE);
+            viewHolder.mViewShipper.setVisibility(View.VISIBLE);
+        }
+
 
         return convertView;
     }
@@ -126,6 +140,9 @@ public class OwnerHistoryAdapter extends BaseAdapter {
         @Bind(R.id.history_owner_item_update_time)
         TextView mUpdateTime;
 
+        @Bind(R.id.history_owner_item_phoneshipper)
+        TextView mPhoneShipper;
+
         @Bind(R.id.history_owner_item_change_requirement)
         Button mChangeRequirement;
 
@@ -144,12 +161,12 @@ public class OwnerHistoryAdapter extends BaseAdapter {
     }
 
     public interface OnClickListenner {
-        void onChangeRequirement( PackageModel packageModel);
+        void onChangeRequirement(PackageModel packageModel);
 
         void onDeleteRequirement(int idPackage, int position);
 
-        void onViewShipper();
+        void onViewShipper(PackageModel packageModel);
 
-        void onViewAuction();
+        void onViewAuction(PackageModel packageModel);
     }
 }

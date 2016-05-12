@@ -45,7 +45,8 @@ import okio.Buffer;
 public class APIClient {
     private static final String TAG = APIClient.class.getSimpleName();
 
-    private static final String BASE_URL = "http://192.168.43.25/api/";
+//    private static final String BASE_URL = "http://192.168.43.25/api/";
+    private static final String BASE_URL = "http://192.168.1.102/api/";
     private static final String PREF_NAME = "Shipper";
 
     private static APIClient instance;
@@ -151,14 +152,6 @@ public class APIClient {
         return true;
     }
 
-    public static void savePassword(Context context, String password) {
-        savePreferences(context, "account::password", password);
-    }
-
-    public static String getPassword(Context context) {
-        return getPreferences(context, "account::password");
-    }
-
     public static boolean isOwner(Context context) {
         int accountType = Integer.parseInt(getAccountType(context));
         return accountType == Const.OWNER;
@@ -203,7 +196,6 @@ public class APIClient {
 
     public static void removeAccount(Context context) {
         final SharedPreferences.Editor editor = getPreferences(context).edit();
-        editor.remove("account::token");
         editor.remove("account::detail");
         editor.apply();
     }

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/header_height"
@@ -11,10 +12,10 @@
         android:text="Hệ Thống Hỗ Trợ Vận Chuyển"
         android:textColor="@color/white"
         android:textSize="16sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
         <TextView
@@ -28,21 +29,20 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/delivery_requirement_owner_package_name"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:gravity="center"
 
-            android:id="@+id/delivery_requirement_owner_package_name"
+            android:gravity="center"
             android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
         <TextView
@@ -69,7 +69,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
         <TextView
@@ -98,16 +97,26 @@
         android:layout_height="45dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="Các Đại Lý Vận Chuyển Nhận Đi Giao"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/delivery_requirement_owner_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="Chưa Có Đại Lý Vận Chuyển Nhận Đi Giao"
+        android:textSize="15sp"
+        android:textStyle="bold|italic" />
+
     <ListView
-        android:layout_marginTop="20dp"
         android:id="@+id/delivery_requirement_owner_list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"></ListView>
 </LinearLayout>

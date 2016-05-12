@@ -3,6 +3,7 @@ package com.quynt.hethonghotrovanchuyen.activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,7 +28,7 @@ import butterknife.Bind;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
+ * <p/>
  * Created by QuyNT on 12/03/2016.
  */
 public class AuctionOwnerActivity extends BaseActivity implements AuctionOwnerAdapter.OnClickAllowDelivery {
@@ -39,6 +40,9 @@ public class AuctionOwnerActivity extends BaseActivity implements AuctionOwnerAd
 
     @Bind(R.id.auction_owner_start_location)
     protected TextView mStartLocation;
+
+    @Bind(R.id.auction_owner_empty)
+    TextView mEmptyView;
 
     @Bind(R.id.auction_owner_end_location)
     protected TextView mEndLocation;
@@ -115,6 +119,13 @@ public class AuctionOwnerActivity extends BaseActivity implements AuctionOwnerAd
                         AuctionOwnerActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                int size = viewAuctionOwnerAllowedResponse.getAuctions().size();
+                                if (size == 0) {
+                                    mEmptyView.setVisibility(View.VISIBLE);
+                                    return;
+                                } else {
+                                    mEmptyView.setVisibility(View.GONE);
+                                }
                                 auctionOwnerAdapter.setAuctions(viewAuctionOwnerAllowedResponse.getAuctions());
                             }
                         });

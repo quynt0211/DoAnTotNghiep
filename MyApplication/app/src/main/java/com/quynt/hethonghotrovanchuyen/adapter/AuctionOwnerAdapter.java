@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
+ * <p/>
  * Created by QuyNT on 12/03/2016.
  */
 public class AuctionOwnerAdapter extends BaseAdapter {
@@ -75,9 +75,11 @@ public class AuctionOwnerAdapter extends BaseAdapter {
         if (Double.compare(auction.getmRate(), -1.0) == 0) {
             viewHolder.mRate.setText("Chưa Đặt Giá");
             viewHolder.mAllowDelivery.setEnabled(false);
+            viewHolder.mAllowDelivery.setVisibility(View.GONE);
         } else {
             viewHolder.mRate.setText(String.valueOf(auction.getmRate()));
             viewHolder.mAllowDelivery.setEnabled(true);
+            viewHolder.mAllowDelivery.setVisibility(View.VISIBLE);
         }
 
         viewHolder.mAllowDelivery.setOnClickListener(new View.OnClickListener() {

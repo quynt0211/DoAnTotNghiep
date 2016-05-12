@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -16,6 +17,7 @@ import com.quynt.hethonghotrovanchuyen.R;
 import com.quynt.hethonghotrovanchuyen.activity.AuctionOwnerActivity;
 import com.quynt.hethonghotrovanchuyen.activity.ChangeDeliveryRequirementActivity;
 import com.quynt.hethonghotrovanchuyen.activity.DeliveryRequirementOwnerActivity;
+import com.quynt.hethonghotrovanchuyen.activity.DetailShipperActivity;
 import com.quynt.hethonghotrovanchuyen.adapter.OwnerHistoryAdapter;
 import com.quynt.hethonghotrovanchuyen.model.PackageModel;
 import com.quynt.hethonghotrovanchuyen.model.response.ErrorResponse;
@@ -23,6 +25,7 @@ import com.quynt.hethonghotrovanchuyen.model.response.OwnerHistoryResponse;
 import com.quynt.hethonghotrovanchuyen.utils.APIClient;
 import com.quynt.hethonghotrovanchuyen.utils.Const;
 import com.quynt.hethonghotrovanchuyen.utils.DialogUtils;
+import com.quynt.hethonghotrovanchuyen.utils.StringUtils;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -34,6 +37,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * He Thong Ho Tro Van Chuyen
@@ -48,6 +52,11 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
 
     List<PackageModel> mPackageHistory;
 
+    List<PackageModel> mSearchHistory;
+
+    @Bind(R.id.history_owner_search)
+    EditText mSearchText;
+
     @Override
     protected int getContentView() {
         return R.layout.fragment_history;
@@ -58,6 +67,7 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
         initListView();
         getHistory();
         mPackageHistory = new ArrayList<PackageModel>();
+        mSearchHistory = new ArrayList<PackageModel>();
     }
 
     private void initListView() {
@@ -151,6 +161,15 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
         bundle.putSerializable("package_model", packageModel);
         intent.putExtras(bundle);
         startActivityForResult(intent, Const.HISTORY_VIEW_AUCTION);
+    }
+
+    @Override
+    public void onViewDetailShipper(PackageModel packageModel) {
+        Intent intent = new Intent(getBaseActivity(), DetailShipperActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("package_model", packageModel);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     private void getHistory() {
@@ -279,4 +298,29 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
             }
         });
     }
+
+    @OnClick(R.id.history_owner_search_icon)
+    protected void search() {
+        String mSearchStr = mSearchText.getText().toString().trim();
+        if (StringUtils.isEmpty(mSearchStr)) {
+            ownerHistoryAdapter.setPackages(mPackageHistory);
+            return;
+        }
+        mSearchHistory.clear();
+        for (PackageModel packageModel : mPackageHistory) {
+            if (isMatch(packageModel, mSearchStr)) {
+                mSearchHistory.add(packageModel);
+            }
+        }
+
+        ownerHistoryAdapter.setPackages(mSearchHistory);
+    }
+
+    private boolean isMatch(PackageModel packageModel, String string) {
+        if (packageModel.getmPackageName().contains(string) || packageModel.getShipperName().contains(string)
+                || packageModel.getmShipperPhone().contains(string))
+            return true;
+        return false;
+    }
+
 }

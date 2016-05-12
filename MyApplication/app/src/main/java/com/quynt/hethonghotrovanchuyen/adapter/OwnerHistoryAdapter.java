@@ -97,6 +97,13 @@ public class OwnerHistoryAdapter extends BaseAdapter {
             }
         });
 
+        viewHolder.mDetailShipper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickListenner.onViewDetailShipper(packageModel);
+            }
+        });
+
 
         viewHolder.mPackageName.setText(packageModel.getmPackageName());
         viewHolder.mStartLocation.setText(packageModel.getmStartLocation());
@@ -105,18 +112,19 @@ public class OwnerHistoryAdapter extends BaseAdapter {
         viewHolder.mCurrentLocation.setText(packageModel.getmCurrentLocation());
         viewHolder.mUpdateTime.setText(packageModel.getmUpdateTime());
         viewHolder.mShipper.setText(packageModel.getShipperName());
-        viewHolder.mPhoneShipper.setText(packageModel.getShipperPhone());
 
         if (packageModel.isDelivery()) {
             viewHolder.mChangeRequirement.setVisibility(View.GONE);
             viewHolder.mDeleteRequirement.setVisibility(View.GONE);
             viewHolder.mViewAuction.setVisibility(View.GONE);
             viewHolder.mViewShipper.setVisibility(View.GONE);
+            viewHolder.mDetailShipper.setVisibility(View.VISIBLE);
         } else {
             viewHolder.mChangeRequirement.setVisibility(View.VISIBLE);
             viewHolder.mDeleteRequirement.setVisibility(View.VISIBLE);
             viewHolder.mViewAuction.setVisibility(View.VISIBLE);
             viewHolder.mViewShipper.setVisibility(View.VISIBLE);
+            viewHolder.mDetailShipper.setVisibility(View.GONE);
         }
 
 
@@ -140,9 +148,6 @@ public class OwnerHistoryAdapter extends BaseAdapter {
         @Bind(R.id.history_owner_item_update_time)
         TextView mUpdateTime;
 
-        @Bind(R.id.history_owner_item_phoneshipper)
-        TextView mPhoneShipper;
-
         @Bind(R.id.history_owner_item_change_requirement)
         Button mChangeRequirement;
 
@@ -154,6 +159,9 @@ public class OwnerHistoryAdapter extends BaseAdapter {
 
         @Bind(R.id.history_owner_item_view_auction)
         Button mViewAuction;
+
+        @Bind(R.id.history_owner_item_view_detail_shipper)
+        Button mDetailShipper;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
@@ -168,5 +176,7 @@ public class OwnerHistoryAdapter extends BaseAdapter {
         void onViewShipper(PackageModel packageModel);
 
         void onViewAuction(PackageModel packageModel);
+
+        void onViewDetailShipper(PackageModel packageModel);
     }
 }

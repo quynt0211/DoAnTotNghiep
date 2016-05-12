@@ -18,14 +18,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:text="Hệ Thống Hỗ Trợ Vận Chuyển"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
+        <RelativeLayout
+            android:id="@+id/view_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/history_owner_search"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="0dp"
+                android:hint="Tìm Kiếm Đại Lý Vận Chuyển"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/history_owner_search_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/icon_search" />
+        </RelativeLayout>
 
         <ListView
             android:id="@+id/history_owner"

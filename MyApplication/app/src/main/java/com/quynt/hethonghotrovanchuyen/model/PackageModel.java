@@ -243,4 +243,14 @@ public class PackageModel implements Serializable {
     public String getShipperName() {
         return mShipperName;
     }
+
+    public String getmShipperPhone() {
+        return mShipperPhone;
+    }
+
+    public String getmShipperName() {
+        return mShipperName;
+    }
+
+
 }

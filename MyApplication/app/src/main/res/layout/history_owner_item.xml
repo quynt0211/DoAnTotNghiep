@@ -124,25 +124,6 @@
             android:text="Nguyen Trong Quy" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Người Đi Giao" />
-
-        <TextView
-            android:id="@+id/history_owner_item_phoneshipper"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nguyen Trong Quy" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -215,4 +196,13 @@
             android:background="@drawable/red_background_rounded"
             android:text="Danh Sách Đấu Giá" />
     </LinearLayout>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/history_owner_item_view_detail_shipper"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/red_background_rounded"
+        android:text="Xem Thông Tin Đại Lý Vận Chuyển" />
 </LinearLayout>

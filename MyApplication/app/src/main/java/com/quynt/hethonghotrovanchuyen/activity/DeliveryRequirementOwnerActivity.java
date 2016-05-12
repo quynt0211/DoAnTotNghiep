@@ -2,6 +2,9 @@ package com.quynt.hethonghotrovanchuyen.activity;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -44,6 +47,11 @@ public class DeliveryRequirementOwnerActivity extends BaseActivity implements De
 
     private PackageModel packageModel;
     DeliveryRequirementOwnerAdapter deliveryRequirementOwnerAdapter;
+
+    @Bind(R.id.delivery_requirement_owner_empty)
+    TextView mEmptyView;
+
+    private static final int TIME_OUT = 2000;
 
     @Override
     protected int getContentView() {
@@ -114,6 +122,12 @@ public class DeliveryRequirementOwnerActivity extends BaseActivity implements De
                         DeliveryRequirementOwnerActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                int size = viewAuctionOwnerResponse.getShipper().size();
+                                if (size == 0) {
+                                    mEmptyView.setVisibility(View.VISIBLE);
+                                } else {
+                                    mEmptyView.setVisibility(View.GONE);
+                                }
                                 deliveryRequirementOwnerAdapter.setShippers(viewAuctionOwnerResponse.getShipper());
                             }
                         });
@@ -155,24 +169,31 @@ public class DeliveryRequirementOwnerActivity extends BaseActivity implements De
 
                 if (response.isSuccessful()) {
                     String body = response.body().string();
+                    Log.d("body_click_allow", body);
                     final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
                     if (!errorResponse.hasError()) {
                         DeliveryRequirementOwnerActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                getShipperAuction();
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        getShipperAuction();
+                                    }
+                                }, TIME_OUT);
+
+                                DialogUtils.showMessageDialog(DeliveryRequirementOwnerActivity.this, errorResponse.getMessage());
+                            }
+                        });
+                    } else {
+                        DeliveryRequirementOwnerActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                DialogUtils.showMessageDialog(DeliveryRequirementOwnerActivity.this, errorResponse.getMessage());
                             }
                         });
                     }
-
-                    DeliveryRequirementOwnerActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            DialogUtils.showMessageDialog(DeliveryRequirementOwnerActivity.this, errorResponse.getMessage());
-                        }
-                    });
                 }
-
             }
         });
     }

@@ -18,6 +18,8 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -25,13 +27,15 @@ import butterknife.Bind;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
+ * <p/>
  * Created by QuyNT on 15/04/2016.
  */
 public class HomeFragment extends BaseFragment implements HomeAdapter.OnClickDelivery {
     @Bind(R.id.home_listview)
     ListView mPostList;
     HomeAdapter homeAdapter;
+
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
     protected int getContentView() {
@@ -87,7 +91,7 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.OnClickDel
                             @Override
                             public void run() {
                                 int size = ownerHomeResponse.getPackage().size();
-                                if(size == 0 ){
+                                if (size == 0) {
                                     DialogUtils.showMessageDialog(getBaseActivity(), "Không Có Gói Hàng Mới Nào");
                                 }
                                 homeAdapter.setPackages(ownerHomeResponse.getPackage());
@@ -115,6 +119,7 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.OnClickDel
         params.put("idpackage", String.valueOf(packageModel.getmIdPackage()));
         params.put("idowner", String.valueOf(packageModel.getmIdOwner()));
         params.put("idshipper", String.valueOf(APIClient.getShipperAccount(getBaseActivity()).getId()));
+        params.put("auctiondate", dateFormat.format(new Date()));
 
         Log.d("idpacage", String.valueOf(packageModel.getmIdPackage()));
         Log.d("idowner", String.valueOf(packageModel.getmIdOwner()));

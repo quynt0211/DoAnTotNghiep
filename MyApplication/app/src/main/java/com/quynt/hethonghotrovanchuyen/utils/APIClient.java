@@ -160,6 +160,7 @@ public class APIClient {
     public static String getAccountType(Context context) {
         return getPreferences(context, "account::type");
     }
+    // temp add comment at 164 + 163
 
     public static void saveAccountType(Context context, int mAccountType) {
         savePreferences(context, "account::type", String.valueOf(mAccountType));
@@ -177,7 +178,6 @@ public class APIClient {
     // master comment on line 178
     // // master comment on line 179
     // this is the comment from temp
-
     //// master comment on line 180
 
     public static Shipper getShipperAccount(Context context) {

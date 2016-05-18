@@ -194,6 +194,8 @@ public class APIClient {
         return (getOwnerAccount(context) != null || getShipperAccount(context) != null);
     }
 
+    // this is the comment to deo git responsity
+
     public static void removeAccount(Context context) {
         final SharedPreferences.Editor editor = getPreferences(context).edit();
         editor.remove("account::detail");

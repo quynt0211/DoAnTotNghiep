@@ -35,6 +35,7 @@ public class AccountOwnerInSystemActivity extends BaseActivity implements Accoun
     protected int getContentView() {
         return R.layout.activity_account_owner_in_system;
     }
+    // this is the comment of dev01
 
     @Override
     protected void initView() {

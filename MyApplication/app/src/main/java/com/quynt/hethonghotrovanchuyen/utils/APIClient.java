@@ -46,7 +46,7 @@ public class APIClient {
     private static final String TAG = APIClient.class.getSimpleName();
 
 //   private static final String BASE_URL = "http://192.168.43.25/api/";
-    private static final String BASE_URL = "http://192.168.0.105/api/";
+    private static final String BASE_URL = "http://192.168.1.118/api/";
     private static final String PREF_NAME = "Shipper";
 
     private static APIClient instance;

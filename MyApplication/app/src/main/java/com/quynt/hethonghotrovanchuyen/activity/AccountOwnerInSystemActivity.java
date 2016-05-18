@@ -35,9 +35,7 @@ public class AccountOwnerInSystemActivity extends BaseActivity implements Accoun
     protected int getContentView() {
         return R.layout.activity_account_owner_in_system;
     }
-    // this is the comment master
-    // this is the comment master
-    // this is the comment master
+    // this is the comment of dev01
 
     @Override
     protected void initView() {
@@ -54,6 +52,8 @@ public class AccountOwnerInSystemActivity extends BaseActivity implements Accoun
     private void getOwnerAccount() {
         final Dialog dialog = DialogUtils.showLoadingDialog(this);
         dialog.show();
+
+        // dev01 insert here 55
 
         SortedMap<String, String> params = new TreeMap<>();
         params.put("type", String.valueOf(2));
@@ -145,4 +145,7 @@ public class AccountOwnerInSystemActivity extends BaseActivity implements Accoun
             }
         });
     }
+    // dev01 still insert herae
+    // dev01 still insert here
+
 }

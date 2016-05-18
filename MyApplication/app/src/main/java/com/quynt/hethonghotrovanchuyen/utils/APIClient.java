@@ -174,13 +174,11 @@ public class APIClient {
             return new Gson().fromJson(json, Owner.class);
         }
     }
+    // master comment on line 178
+    // // master comment on line 179
+    // this is the comment from temp
 
-    // this is the coomment from dev01
-    // this is the coomment from dev01
-    // this is the coomment from dev01// this is the coomment from dev01
-    // this is the coomment from dev01
-    // this is the coomment from dev01
-
+    //// master comment on line 180
 
     public static Shipper getShipperAccount(Context context) {
         final String json = getPreferences(context, "account::detail");

@@ -9,22 +9,12 @@
         android:layout_height="@dimen/header_height"
         android:background="@drawable/theme_background_button"
         android:gravity="center"
-        android:text="Danh Sách Gói Hàng Bạn Nhận Đi Giao"
+        android:text="Danh Sách Chủ Hàng Trong Hệ Thống"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/auction_shipper_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:text="Chưa Có Gói Hàng Mới Bạn Đấu Giá"
-        android:textSize="15sp"
-        android:textStyle="bold|italic" />
-
     <ListView
-        android:id="@+id/auction_shipper"
+        android:id="@+id/account_owner_in_system_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 </LinearLayout>

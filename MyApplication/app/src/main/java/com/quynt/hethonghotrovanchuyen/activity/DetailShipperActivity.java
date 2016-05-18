@@ -7,8 +7,10 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
+import com.quynt.hethonghotrovanchuyen.model.Auction;
 import com.quynt.hethonghotrovanchuyen.model.PackageModel;
 import com.quynt.hethonghotrovanchuyen.model.Shipper;
+import com.quynt.hethonghotrovanchuyen.model.response.DetailAuctionResponse;
 import com.quynt.hethonghotrovanchuyen.model.response.ErrorResponse;
 import com.quynt.hethonghotrovanchuyen.model.response.RegisterShipperResponse;
 import com.quynt.hethonghotrovanchuyen.utils.APIClient;
@@ -49,6 +51,9 @@ public class DetailShipperActivity extends BaseActivity {
     @Bind(R.id.detail_shipper_introduce)
     TextView mShipperIntroduce;
 
+    @Bind(R.id.detail_shipper_package_rate)
+    TextView mRate;
+
 
     PackageModel packageModel;
 
@@ -64,6 +69,7 @@ public class DetailShipperActivity extends BaseActivity {
             packageModel = (PackageModel) bundle.getSerializable("package_model");
             mPackageName.setText(packageModel.getmPackageName());
             getInfomationShipper();
+            getRate();
         }
     }
 
@@ -112,6 +118,51 @@ public class DetailShipperActivity extends BaseActivity {
                             @Override
                             public void run() {
                                 setInfoShipper(shiper);
+                            }
+                        });
+                    }
+                }
+            }
+        });
+    }
+
+    private void getRate() {
+        final Dialog dialog = DialogUtils.showLoadingDialog(this);
+        dialog.show();
+
+        SortedMap<String, String> params = new TreeMap<>();
+        params.put("idshipper", String.valueOf(packageModel.getmIdShipper()));
+        params.put("idpackage", String.valueOf(packageModel.getmIdPackage()));
+
+        APIClient.getInstance().execPost("getRate", params, new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                DetailShipperActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                DetailShipperActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+                    }
+                });
+                if (response.isSuccessful()) {
+                    String body = response.body().string();
+                    final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
+                    if (!errorResponse.hasError()) {
+                        DetailAuctionResponse detailAuctionResponse = new Gson().fromJson(body, DetailAuctionResponse.class);
+                        final Auction auction = detailAuctionResponse.getAuction();
+                        DetailShipperActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mRate.setText(String.valueOf(auction.getmRate()));
                             }
                         });
                     }

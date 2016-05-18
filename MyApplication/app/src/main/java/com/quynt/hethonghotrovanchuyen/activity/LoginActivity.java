@@ -30,7 +30,7 @@ import butterknife.OnClick;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
+ * <p/>
  * Created by QuyNT on 12/04/2016.
  */
 public class LoginActivity extends BaseActivity {
@@ -119,6 +119,7 @@ public class LoginActivity extends BaseActivity {
 
                 if (response.isSuccessful()) {
                     String body = response.body().string();
+                    Log.d("login_body", body);
                     final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
                     if (errorResponse.hasError()) {
                         LoginActivity.this.runOnUiThread(new Runnable() {
@@ -148,8 +149,6 @@ public class LoginActivity extends BaseActivity {
                                     }, TIME_OUT);
                                 }
                             });
-
-
                         } else {
                             LoginShipperResponse loginShipperResponse = new Gson().fromJson(body, LoginShipperResponse.class);
                             APIClient.saveAccountType(LoginActivity.this, Const.SHIPPER);
@@ -189,5 +188,15 @@ public class LoginActivity extends BaseActivity {
             return "Vui Lòng Nhập Mật Khẩu";
         }
         return "";
+    }
+
+    private void goToAdminPage() {
+
+    }
+
+    @OnClick(R.id.login_login_with_admin)
+    protected void goToLoginAdminPage() {
+        Intent intent = new Intent(LoginActivity.this, LoginAdminPageActivity.class);
+        startActivity(intent);
     }
 }

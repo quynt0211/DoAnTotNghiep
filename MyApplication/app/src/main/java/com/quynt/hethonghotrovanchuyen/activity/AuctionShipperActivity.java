@@ -5,7 +5,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
@@ -28,13 +30,16 @@ import butterknife.Bind;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
+ * <p/>
  * Created by QuyNT on 12/03/2016.
  */
 public class AuctionShipperActivity extends BaseActivity implements AuctionShipperAdapter.OnClickUpdateAuction {
     @Bind(R.id.auction_shipper)
     protected ListView mAuctionShipper;
     AuctionShipperAdapter auctionShipperAdapter;
+
+    @Bind(R.id.auction_shipper_empty)
+    TextView mAuctionShipperEmpty;
 
     @Override
     protected int getContentView() {
@@ -91,6 +96,12 @@ public class AuctionShipperActivity extends BaseActivity implements AuctionShipp
                         AuctionShipperActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                int size = receiveDeliveryResponse.getmReceiveDeliveries().size();
+                                if (size == 0) {
+                                    mAuctionShipperEmpty.setVisibility(View.VISIBLE);
+                                } else {
+                                    mAuctionShipperEmpty.setVisibility(View.GONE);
+                                }
                                 auctionShipperAdapter.setmReceiveDeliveries(receiveDeliveryResponse.getmReceiveDeliveries());
                             }
                         });

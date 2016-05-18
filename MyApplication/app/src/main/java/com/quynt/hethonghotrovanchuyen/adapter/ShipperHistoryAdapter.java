@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
+ * <p/>
  * Created by Paditech on 19/03/2016.
  */
 public class ShipperHistoryAdapter extends BaseAdapter {
@@ -79,6 +79,7 @@ public class ShipperHistoryAdapter extends BaseAdapter {
         viewHolder.mUpdateTime.setText(packageModel.getmUpdateTime());
         viewHolder.mStartLocation.setText(packageModel.getmStartLocation());
         viewHolder.mOwnerPhone.setText(packageModel.getOwnerPhone());
+        viewHolder.mRateTv.setText(String.format("%s.000", packageModel.getRate()));
         viewHolder.mUpdateLocationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +126,9 @@ public class ShipperHistoryAdapter extends BaseAdapter {
 
         @Bind(R.id.shipper_history_owner_phone)
         TextView mOwnerPhone;
+
+        @Bind(R.id.shipper_history_rate)
+        TextView mRateTv;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.quynt.hethonghotrovanchuyen.R;
@@ -119,12 +120,14 @@ public class OwnerHistoryAdapter extends BaseAdapter {
             viewHolder.mViewAuction.setVisibility(View.GONE);
             viewHolder.mViewShipper.setVisibility(View.GONE);
             viewHolder.mDetailShipper.setVisibility(View.VISIBLE);
+            viewHolder.mViewRate.setVisibility(View.VISIBLE);
         } else {
             viewHolder.mChangeRequirement.setVisibility(View.VISIBLE);
             viewHolder.mDeleteRequirement.setVisibility(View.VISIBLE);
             viewHolder.mViewAuction.setVisibility(View.VISIBLE);
             viewHolder.mViewShipper.setVisibility(View.VISIBLE);
             viewHolder.mDetailShipper.setVisibility(View.GONE);
+            viewHolder.mViewRate.setVisibility(View.GONE);
         }
 
 
@@ -159,6 +162,12 @@ public class OwnerHistoryAdapter extends BaseAdapter {
 
         @Bind(R.id.history_owner_item_view_auction)
         Button mViewAuction;
+
+        @Bind(R.id.history_owner_item_rate)
+        TextView mRate;
+
+        @Bind(R.id.history_owner_item_view_rate)
+        LinearLayout mViewRate;
 
         @Bind(R.id.history_owner_item_view_detail_shipper)
         Button mDetailShipper;

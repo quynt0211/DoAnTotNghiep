@@ -1,7 +1,9 @@
 package com.quynt.hethonghotrovanchuyen.activity;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -49,6 +51,7 @@ public class AuctionOwnerActivity extends BaseActivity implements AuctionOwnerAd
     AuctionOwnerAdapter auctionOwnerAdapter;
 
     private PackageModel packageModel;
+    private static final int TIME_OUT = 3000;
 
     @Override
     protected int getContentView() {
@@ -183,12 +186,17 @@ public class AuctionOwnerActivity extends BaseActivity implements AuctionOwnerAd
                     AuctionOwnerActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            getAuctionAllowed();
                             DialogUtils.showMessageDialog(AuctionOwnerActivity.this, errorResponse.getMessage());
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    getAuctionAllowed();
+                                    AuctionOwnerActivity.this.setResult(Activity.RESULT_OK);
+                                    AuctionOwnerActivity.this.finish();
+                                }
+                            }, TIME_OUT);
                         }
                     });
-
-
                 }
             }
         });

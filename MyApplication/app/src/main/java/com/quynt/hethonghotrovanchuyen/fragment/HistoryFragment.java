@@ -127,6 +127,12 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
                 getHistory();
             }
         }
+
+        if (requestCode == Const.HISTORY_VIEW_AUCTION) {
+            if (resultCode == Activity.RESULT_OK) {
+                getHistory();
+            }
+        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 

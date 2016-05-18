@@ -68,21 +68,10 @@ public class HomeAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.mFeture.setText(convertFeture(mPackages.get(position)));
         viewHolder.mOwnerName.setText(mPackages.get(position).getmOwnerName());
-        viewHolder.mDescrition.setText(mPackages.get(position).getmDescription());
         viewHolder.mEndLocation.setText(mPackages.get(position).getmEndLocation());
         viewHolder.mPackageName.setText(mPackages.get(position).getmPackageName());
-        viewHolder.mStatus.setText(mPackages.get(position).getmStatus());
         viewHolder.mStartLocation.setText(mPackages.get(position).getmStartLocation());
-        viewHolder.mCreateTime.setText(mPackages.get(position).getmCreateTime());
-        viewHolder.mOwnerPhone.setText(mPackages.get(position).getOwnerPhone());
-        viewHolder.mDeliveryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickDelivery.clickDelivery(packageModel);
-            }
-        });
         return convertView;
     }
 
@@ -111,9 +100,6 @@ public class HomeAdapter extends BaseAdapter {
         @Bind(R.id.post_item_owner_name)
         TextView mOwnerName;
 
-        @Bind(R.id.post_item_status)
-        TextView mStatus;
-
         @Bind(R.id.post_item_package_name)
         TextView mPackageName;
 
@@ -122,21 +108,6 @@ public class HomeAdapter extends BaseAdapter {
 
         @Bind(R.id.post_item_end_location)
         TextView mEndLocation;
-
-        @Bind(R.id.post_item_feture)
-        TextView mFeture;
-
-        @Bind(R.id.post_item_description)
-        TextView mDescrition;
-
-        @Bind(R.id.post_item_create_time)
-        TextView mCreateTime;
-
-        @Bind(R.id.post_item_owner_phone)
-        TextView mOwnerPhone;
-
-        @Bind(R.id.post_item_delivery_btn)
-        Button mDeliveryBtn;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

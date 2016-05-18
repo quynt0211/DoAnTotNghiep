@@ -33,44 +33,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Số Điện Thoại" />
-
-        <TextView
-            android:id="@+id/owner_home_item_owner_phone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <!--<LinearLayout-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:text="Trạng Thái Gói Hàng" />-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/owner_home_item_status"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"/>-->
-    <!--</LinearLayout>-->
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Tên Gói Hàng" />
 
         <TextView
@@ -90,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Gửi Từ" />
+            android:text="Nơi Gửi:" />
 
         <TextView
             android:id="@+id/owner_home_item_start_location"
@@ -108,73 +70,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Đến" />
+            android:text="Nơi Nhận:" />
 
         <TextView
             android:id="@+id/owner_home_item_end_location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Thời Gian Đăng" />
-
-        <TextView
-            android:id="@+id/owner_home_item_create_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Đặc Tính Gói Hàng" />
-
-        <TextView
-            android:id="@+id/owner_home_item_feture"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Mô Tả Thêm" />
-
-        <TextView
-            android:id="@+id/owner_home_item_description"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
     </LinearLayout>
 
 </LinearLayout>

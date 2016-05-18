@@ -5,7 +5,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
@@ -36,6 +38,9 @@ public class DeliveryShipperActivity extends BaseActivity implements DeliveryShi
     protected ListView mDeliveryShipperList;
 
     DeliveryShipperAdapter deliveryShipperAdapter;
+
+    @Bind(R.id.delivery_shipper_empty)
+    TextView mDeliveryShipperEmpty;
 
     @Override
     protected int getContentView() {
@@ -90,6 +95,12 @@ public class DeliveryShipperActivity extends BaseActivity implements DeliveryShi
                         DeliveryShipperActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                int size = receiveDeliveryResponse.getmReceiveDeliveries().size();
+                                if(size == 0 ){
+                                    mDeliveryShipperEmpty.setVisibility(View.VISIBLE);
+                                }else{
+                                    mDeliveryShipperEmpty.setVisibility(View.GONE);
+                                }
                                 deliveryShipperAdapter.setmReceiveDeliveries(receiveDeliveryResponse.getmReceiveDeliveries());
                             }
                         });

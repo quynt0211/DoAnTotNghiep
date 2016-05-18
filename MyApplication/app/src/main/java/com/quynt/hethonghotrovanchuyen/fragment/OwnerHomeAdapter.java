@@ -82,15 +82,10 @@ public class OwnerHomeAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.mFeture.setText(convertFeture(mPackages.get(position)));
         viewHolder.mOwnerName.setText(mPackages.get(position).getmOwnerName());
-        viewHolder.mDescrition.setText(mPackages.get(position).getmDescription());
         viewHolder.mEndLocation.setText(mPackages.get(position).getmEndLocation());
         viewHolder.mPackageName.setText(mPackages.get(position).getmPackageName());
-    //    viewHolder.mStatus.setText(mPackages.get(position).getmStatus());
         viewHolder.mStartLocation.setText(mPackages.get(position).getmStartLocation());
-        viewHolder.mCreateTime.setText(mPackages.get(position).getmCreateTime());
-        viewHolder.mOwnerPhone.setText(mPackages.get(position).getOwnerPhone());
         return convertView;
     }
 
@@ -98,9 +93,6 @@ public class OwnerHomeAdapter extends BaseAdapter {
     public static class ViewHolder {
         @Bind(R.id.owner_home_item_owner_name)
         TextView mOwnerName;
-
-//        @Bind(R.id.owner_home_item_status)
-//        TextView mStatus;
 
         @Bind(R.id.owner_home_item_package_name)
         TextView mPackageName;
@@ -110,18 +102,6 @@ public class OwnerHomeAdapter extends BaseAdapter {
 
         @Bind(R.id.owner_home_item_end_location)
         TextView mEndLocation;
-
-        @Bind(R.id.owner_home_item_feture)
-        TextView mFeture;
-
-        @Bind(R.id.owner_home_item_description)
-        TextView mDescrition;
-
-        @Bind(R.id.owner_home_item_create_time)
-        TextView mCreateTime;
-
-        @Bind(R.id.owner_home_item_owner_phone)
-        TextView mOwnerPhone;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

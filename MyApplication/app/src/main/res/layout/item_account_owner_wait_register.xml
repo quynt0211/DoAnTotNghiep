@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp">
 
@@ -14,10 +14,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tên Người đăng" />
+            android:text="Tên Chủ Hàng" />
 
         <TextView
-            android:id="@+id/post_item_owner_name"
+            android:id="@+id/item_account_owner_wait_register_owner_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -26,17 +26,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tên Gói Hàng" />
+            android:text="Số Điện Thoại" />
 
         <TextView
-            android:id="@+id/post_item_package_name"
+            android:id="@+id/item_account_owner_wait_register_owner_phone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -45,17 +45,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Gửi Từ" />
+            android:text="Địa Chỉ" />
 
         <TextView
-            android:id="@+id/post_item_start_location"
+            android:id="@+id/item_account_owner_wait_register_owner_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -64,21 +64,46 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Đến:" />
+            android:text="Mật Khẩu" />
 
         <TextView
-            android:id="@+id/post_item_end_location"
+            android:id="@+id/item_account_owner_wait_register_owner_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/item_account_owner_wait_register_allow_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/theme_color_rounded_button"
+            android:text="Cho Phép Đăng Ký"
+            android:textColor="@color/white" />
+        <Button
+            android:id="@+id/item_account_owner_wait_register_block_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/gray_color_rounded_button"
+            android:text="Chặn Đăng Ký"
+            android:textColor="@color/white" />
+    </LinearLayout>
 </LinearLayout>

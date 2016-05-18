@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
+ * <p/>
  * Created by QuyNT on 12/03/2016.
  */
 public class PackageModel implements Serializable {
@@ -19,6 +19,9 @@ public class PackageModel implements Serializable {
 
     @SerializedName("name")
     private String mPackageName;
+
+    @SerializedName("rate")
+    private String mRate;
 
     @SerializedName("isfragile")
     private int mFragile;
@@ -252,5 +255,7 @@ public class PackageModel implements Serializable {
         return mShipperName;
     }
 
-
+    public String getRate() {
+        return mRate;
+    }
 }

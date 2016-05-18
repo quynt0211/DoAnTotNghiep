@@ -2,7 +2,10 @@ package com.quynt.hethonghotrovanchuyen.fragment;
 
 import android.app.Dialog;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
@@ -30,6 +33,9 @@ public class OwnerHomeFragment extends BaseFragment {
     @Bind(R.id.owner_home_listview)
     protected ListView mOwnerHome;
 
+    @Bind(R.id.home_shipper_empty)
+    TextView mHomeShipperEmpty;
+
     OwnerHomeAdapter ownerHomeAdapter;
 
     private BaseActivity mBaseActivity;
@@ -48,6 +54,12 @@ public class OwnerHomeFragment extends BaseFragment {
     private void setupListView() {
         ownerHomeAdapter = new OwnerHomeAdapter(getBaseActivity());
         mOwnerHome.setAdapter(ownerHomeAdapter);
+        mOwnerHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getBaseActivity(), "OnITemClick", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void getDeliveryRequirements() {
@@ -85,8 +97,10 @@ public class OwnerHomeFragment extends BaseFragment {
                             @Override
                             public void run() {
                                 int size = ownerHomeResponse.getPackage().size();
-                                if(size == 0 ){
-                                    DialogUtils.showMessageDialog(getBaseActivity(), "Không Có Gói Hàng Mới Nào");
+                                if (size == 0) {
+                                    mHomeShipperEmpty.setVisibility(View.VISIBLE);
+                                } else {
+                                    mHomeShipperEmpty.setVisibility(View.GONE);
                                 }
                                 ownerHomeAdapter.setPackages(ownerHomeResponse.getPackage());
                             }

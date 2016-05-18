@@ -45,8 +45,8 @@ import okio.Buffer;
 public class APIClient {
     private static final String TAG = APIClient.class.getSimpleName();
 
-//    private static final String BASE_URL = "http://192.168.43.25/api/";
-    private static final String BASE_URL = "http://192.168.1.102/api/";
+//   private static final String BASE_URL = "http://192.168.43.25/api/";
+    private static final String BASE_URL = "http://192.168.0.105/api/";
     private static final String PREF_NAME = "Shipper";
 
     private static APIClient instance;
@@ -267,19 +267,6 @@ public class APIClient {
         mHttpClient.newCall(rb.build()).enqueue(callback);
     }
 
-    public void execGet(String uri, SortedMap<String, String> params, Callback callback) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getResourceURL(uri)).append(makeQueryString(params));
-        final String url = sb.toString();
-        execMethod(url, "GET", null, callback);
-    }
-
-    public void execDelete(String uri, SortedMap<String, String> params, Callback callback) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getResourceURL(uri)).append(makeQueryString(params));
-        final String url = sb.toString();
-        execMethod(url, "DELETE", null, callback);
-    }
 
     public void execPost(String uri, SortedMap<String, String> params, Callback callback) {
         FormEncodingBuilder fb = new FormEncodingBuilder();
@@ -289,56 +276,5 @@ public class APIClient {
             fb.add(key, value);
         }
         execMethod(getResourceURL(uri), "POST", fb.build(), callback);
-    }
-
-    public void execPostWithUrlParameters(String uri, SortedMap<String, String> urlParams, SortedMap<String, String> formParams, Callback callback) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getResourceURL(uri)).append(makeQueryString(urlParams));
-        final String url = sb.toString();
-        FormEncodingBuilder fb = new FormEncodingBuilder();
-        for (Iterator<String> iterator = formParams.keySet().iterator(); iterator.hasNext(); ) {
-            String key = iterator.next();
-            String value = formParams.get(key);
-            fb.add(key, value);
-        }
-        execMethod(url, "POST", fb.build(), callback);
-    }
-
-    public void execMultipartPost(String uri, SortedMap<String, RequestBody> params, SortedMap<String, RequestBody> files, Callback callback) {
-        final MultipartBuilder mb = new MultipartBuilder().type(MultipartBuilder.FORM);
-        for (Iterator<String> iterator = params.keySet().iterator(); iterator.hasNext(); ) {
-            String key = iterator.next();
-            mb.addPart(Headers.of("Content-Disposition", "form-data; name=\"" + key + "\""), params.get(key));
-        }
-
-        for (Iterator<String> iterator = files.keySet().iterator(); iterator.hasNext(); ) {
-            String key = iterator.next();
-            mb.addPart(Headers.of("Content-Disposition", "form-data; name=\"" + key + "\"; filename=\"" + key + "\""), files.get(key));
-        }
-        execMethod(getResourceURL(uri), "POST", mb.build(), callback);
-    }
-
-    public void execPut(String uri, SortedMap<String, String> params, Callback callback) {
-        FormEncodingBuilder fb = new FormEncodingBuilder();
-        for (Iterator<String> iterator = params.keySet().iterator(); iterator.hasNext(); ) {
-            String key = iterator.next();
-            String value = params.get(key);
-            fb.add(key, value);
-        }
-        execMethod(getResourceURL(uri), "PUT", fb.build(), callback);
-    }
-
-    public void execMultipartPut(String uri, SortedMap<String, RequestBody> params, SortedMap<String, RequestBody> files, Callback callback) {
-        final MultipartBuilder mb = new MultipartBuilder().type(MultipartBuilder.FORM);
-        for (Iterator<String> iterator = params.keySet().iterator(); iterator.hasNext(); ) {
-            String key = iterator.next();
-            mb.addPart(Headers.of("Content-Disposition", "form-data; name=\"" + key + "\""), params.get(key));
-        }
-
-        for (Iterator<String> iterator = files.keySet().iterator(); iterator.hasNext(); ) {
-            String key = iterator.next();
-            mb.addPart(Headers.of("Content-Disposition", "form-data; name=\"" + key + "\"; filename=\"" + key + "\""), files.get(key));
-        }
-        execMethod(getResourceURL(uri), "PUT", mb.build(), callback);
     }
 }

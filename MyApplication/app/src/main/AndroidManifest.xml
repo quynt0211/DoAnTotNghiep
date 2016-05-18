@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.quynt.hethonghotrovanchuyen">
-    <uses-permission  android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -69,6 +70,38 @@
 
         <activity
             android:name=".activity.DetailShipperActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.DetailNewPackageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.AdminPageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.LoginAdminPageActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.AdminPageHomeOwnerActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.AdminPageHomeShipperActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.AccountOwnerInSystemActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.AccountOwnerWaitRegisterActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"></activity>
     </application>

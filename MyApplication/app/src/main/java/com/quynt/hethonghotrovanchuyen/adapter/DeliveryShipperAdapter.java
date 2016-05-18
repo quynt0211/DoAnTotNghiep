@@ -75,10 +75,10 @@ public class DeliveryShipperAdapter extends BaseAdapter {
         viewHolder.mStartLocation.setText(receiveDelivery.getmStartLocation());
         if (receiveDelivery.isAllowed()) {
             viewHolder.mAllowedTv.setText("Bạn Đã Được Cho Phép Đấu Giá");
-            viewHolder.mAuctionBtn.setEnabled(true);
+            viewHolder.mAuctionBtn.setVisibility(View.VISIBLE);
         } else {
             viewHolder.mAllowedTv.setText("Chưa Được Cho Phép Đấu Giá");
-            viewHolder.mAuctionBtn.setEnabled(false);
+            viewHolder.mAuctionBtn.setVisibility(View.GONE);
         }
 
         viewHolder.mAuctionBtn.setOnClickListener(new View.OnClickListener() {

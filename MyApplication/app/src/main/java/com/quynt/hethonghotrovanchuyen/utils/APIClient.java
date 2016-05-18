@@ -175,6 +175,13 @@ public class APIClient {
         }
     }
 
+    // this is the coomment from dev01
+    // this is the coomment from dev01
+    // this is the coomment from dev01// this is the coomment from dev01
+    // this is the coomment from dev01
+    // this is the coomment from dev01
+
+
     public static Shipper getShipperAccount(Context context) {
         final String json = getPreferences(context, "account::detail");
         if (StringUtils.isEmpty(json)) {
@@ -196,6 +203,7 @@ public class APIClient {
 
     // this is the comment to deo git responsity
     // this is the comment from dev01
+    // this is the coomment from dev01
 
     public static void removeAccount(Context context) {
         final SharedPreferences.Editor editor = getPreferences(context).edit();
@@ -283,3 +291,4 @@ public class APIClient {
         execMethod(getResourceURL(uri), "POST", fb.build(), callback);
     }
 }
+

@@ -42,7 +42,16 @@
                 android:layout_marginRight="10dp"
                 android:src="@drawable/icon_search" />
         </RelativeLayout>
-
+        <TextView
+            android:id="@+id/owner_history_no_history"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="Bạn Chưa Đăng Gói Hàng Nào"
+            android:textStyle="bold|italic"
+            android:textSize="20sp" />
         <ListView
             android:id="@+id/history_owner"
             android:layout_width="match_parent"

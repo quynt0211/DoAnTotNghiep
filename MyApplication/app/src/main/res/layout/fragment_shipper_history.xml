@@ -27,6 +27,17 @@
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/shipper_history_no_history"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="Bạn Chưa Đi Giao Gói Hàng Nào"
+            android:textStyle="bold|italic"
+            android:textSize="20sp" />
+
         <ListView
             android:id="@+id/history_shipper"
             android:layout_width="match_parent"

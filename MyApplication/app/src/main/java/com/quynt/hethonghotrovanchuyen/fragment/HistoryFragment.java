@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
@@ -47,6 +48,9 @@ import butterknife.OnClick;
 public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter.OnClickListenner {
     @Bind(R.id.history_owner)
     ListView mOwnerHistorys;
+
+    @Bind(R.id.owner_history_no_history)
+    TextView mNoHistory;
 
     OwnerHistoryAdapter ownerHistoryAdapter;
 
@@ -223,7 +227,10 @@ public class HistoryFragment extends BaseFragment implements OwnerHistoryAdapter
                                 mPackageHistory = ownerHistoryResponse.getPackage();
                                 int size = mPackageHistory.size();
                                 if (size == 0) {
-                                    DialogUtils.showMessageDialog(getBaseActivity(), "Bạn Chưa Đăng Gói Hàng Nào");
+                                    //    DialogUtils.showMessageDialog(getBaseActivity(), "Bạn Chưa Đăng Gói Hàng Nào");
+                                    mNoHistory.setVisibility(View.VISIBLE);
+                                } else {
+                                    mNoHistory.setVisibility(View.GONE);
                                 }
                                 ownerHistoryAdapter.setPackages(mPackageHistory);
                             }

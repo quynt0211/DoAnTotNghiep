@@ -1,14 +1,15 @@
 package com.quynt.hethonghotrovanchuyen.activity;
 
 import android.app.Dialog;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
-import com.quynt.hethonghotrovanchuyen.adapter.AccountOwnerWaitRegisterAdapter;
-import com.quynt.hethonghotrovanchuyen.model.Owner;
+import com.quynt.hethonghotrovanchuyen.adapter.AccountShipperWaitRegisterAdapter;
+import com.quynt.hethonghotrovanchuyen.model.Shipper;
 import com.quynt.hethonghotrovanchuyen.model.response.ErrorResponse;
-import com.quynt.hethonghotrovanchuyen.model.response.OwnerAccountInSystemResponse;
+import com.quynt.hethonghotrovanchuyen.model.response.GetShippersResponse;
 import com.quynt.hethonghotrovanchuyen.utils.APIClient;
 import com.quynt.hethonghotrovanchuyen.utils.DialogUtils;
 import com.squareup.okhttp.Callback;
@@ -24,43 +25,42 @@ import butterknife.Bind;
 /**
  * He Thong Ho Tro Van Chuyen
  * <p/>
- * Created by QuyNT on 14/05/2016.
+ * Created by QuyNT on 18/05/2016.
  */
-public class AccountOwnerWaitRegisterActivity extends BaseActivity implements AccountOwnerWaitRegisterAdapter.OnButtonClickListenner {
-    @Bind(R.id.account_owner_wait_register_list)
-    ListView mWaitRegisterList;
-
-    private AccountOwnerWaitRegisterAdapter accountOwnerWaitRegisterAdapter;
+public class AccountShipperWaitRegister extends BaseActivity implements AccountShipperWaitRegisterAdapter.OnButtonClickListenner {
+    @Bind(R.id.account_shipper_wait_register_list)
+    ListView mShipperWaitRegister;
+    AccountShipperWaitRegisterAdapter accountShipperWaitRegisterAdapter;
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_account_owner_wait_register;
+        return R.layout.activity_account_shipper_wait_register;
     }
 
     @Override
     protected void initView() {
         initListView();
-        getOwnerAccount();
+        getShipper();
     }
 
     private void initListView() {
-        accountOwnerWaitRegisterAdapter = new AccountOwnerWaitRegisterAdapter(this);
-        accountOwnerWaitRegisterAdapter.setOnButtonClickListenner(this);
-        mWaitRegisterList.setAdapter(accountOwnerWaitRegisterAdapter);
+        accountShipperWaitRegisterAdapter = new AccountShipperWaitRegisterAdapter(this);
+        accountShipperWaitRegisterAdapter.setOnButtonClickListenner(this);
+        mShipperWaitRegister.setAdapter(accountShipperWaitRegisterAdapter);
     }
 
     @Override
-    public void onAllowClick(Owner owner) {
+    public void onBlockAccount(Shipper shipper) {
         final Dialog dialog = DialogUtils.showLoadingDialog(this);
         dialog.show();
 
         SortedMap<String, String> params = new TreeMap<>();
-        params.put("idowner", String.valueOf(owner.getId()));
+        params.put("idshipper", String.valueOf(shipper.getId()));
 
-        APIClient.getInstance().execPost("allowRegister", params, new Callback() {
+        APIClient.getInstance().execPost("blockShipper", params, new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         dialog.dismiss();
@@ -70,7 +70,7 @@ public class AccountOwnerWaitRegisterActivity extends BaseActivity implements Ac
 
             @Override
             public void onResponse(Response response) throws IOException {
-                AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         dialog.dismiss();
@@ -79,18 +79,19 @@ public class AccountOwnerWaitRegisterActivity extends BaseActivity implements Ac
 
                 if (response.isSuccessful()) {
                     String body = response.body().string();
+                    Log.d("body_bl__in_system", body);
                     final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
-                    AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                    AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            DialogUtils.showMessageDialog(AccountOwnerWaitRegisterActivity.this, errorResponse.getMessage());
+                            DialogUtils.showMessageDialog(AccountShipperWaitRegister.this, errorResponse.getMessage());
                         }
                     });
                     if (!errorResponse.hasError()) {
-                        AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                        AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                getOwnerAccount();
+                                getShipper();
                             }
                         });
                     }
@@ -100,17 +101,17 @@ public class AccountOwnerWaitRegisterActivity extends BaseActivity implements Ac
     }
 
     @Override
-    public void onBlockClick(Owner owner) {
+    public void onAllowRegister(Shipper shipper) {
         final Dialog dialog = DialogUtils.showLoadingDialog(this);
         dialog.show();
 
         SortedMap<String, String> params = new TreeMap<>();
-        params.put("idowner", String.valueOf(owner.getId()));
+        params.put("idshipper", String.valueOf(shipper.getId()));
 
-        APIClient.getInstance().execPost("blockOwner", params, new Callback() {
+        APIClient.getInstance().execPost("allowShipperRegister", params, new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         dialog.dismiss();
@@ -120,7 +121,7 @@ public class AccountOwnerWaitRegisterActivity extends BaseActivity implements Ac
 
             @Override
             public void onResponse(Response response) throws IOException {
-                AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         dialog.dismiss();
@@ -129,18 +130,19 @@ public class AccountOwnerWaitRegisterActivity extends BaseActivity implements Ac
 
                 if (response.isSuccessful()) {
                     String body = response.body().string();
+                    Log.d("body_allow_wait_r", body);
                     final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
-                    AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                    AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            DialogUtils.showMessageDialog(AccountOwnerWaitRegisterActivity.this, errorResponse.getMessage());
+                            DialogUtils.showMessageDialog(AccountShipperWaitRegister.this, errorResponse.getMessage());
                         }
                     });
-                    if (!errorResponse.hasError()) {
-                        AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                    if(!errorResponse.hasError()){
+                        AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                getOwnerAccount();
+                                getShipper();
                             }
                         });
                     }
@@ -149,18 +151,17 @@ public class AccountOwnerWaitRegisterActivity extends BaseActivity implements Ac
         });
     }
 
-
-    private void getOwnerAccount() {
+    private void getShipper() {
         final Dialog dialog = DialogUtils.showLoadingDialog(this);
         dialog.show();
 
         SortedMap<String, String> params = new TreeMap<>();
         params.put("type", String.valueOf(0));
 
-        APIClient.getInstance().execPost("getOwners", params, new Callback() {
+        APIClient.getInstance().execPost("getShippers", params, new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         dialog.dismiss();
@@ -170,35 +171,35 @@ public class AccountOwnerWaitRegisterActivity extends BaseActivity implements Ac
 
             @Override
             public void onResponse(Response response) throws IOException {
-                AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         dialog.dismiss();
                     }
                 });
-
                 if (response.isSuccessful()) {
                     String body = response.body().string();
+                    Log.d("body_shipper_in_system", body);
                     final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
                     if (!errorResponse.hasError()) {
-                        final OwnerAccountInSystemResponse ownerAccountInSystemResponse = new Gson().fromJson(body, OwnerAccountInSystemResponse.class);
-                        AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                        final GetShippersResponse getShippersResponse = new Gson().fromJson(body, GetShippersResponse.class);
+                        AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                accountOwnerWaitRegisterAdapter.setOwners(ownerAccountInSystemResponse.getOwners());
+                                accountShipperWaitRegisterAdapter.setShippers(getShippersResponse.getShipper());
                             }
                         });
+
                     } else {
-                        AccountOwnerWaitRegisterActivity.this.runOnUiThread(new Runnable() {
+                        AccountShipperWaitRegister.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                DialogUtils.showMessageDialog(AccountOwnerWaitRegisterActivity.this, errorResponse.getMessage());
+                                DialogUtils.showMessageDialog(AccountShipperWaitRegister.this, errorResponse.getMessage());
                             }
                         });
                     }
                 }
             }
         });
-
     }
 }

@@ -9,10 +9,8 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
 import com.quynt.hethonghotrovanchuyen.model.response.ErrorResponse;
-import com.quynt.hethonghotrovanchuyen.model.response.RegisterShipperResponse;
 import com.quynt.hethonghotrovanchuyen.utils.APIClient;
 import com.quynt.hethonghotrovanchuyen.utils.CommonUtils;
-import com.quynt.hethonghotrovanchuyen.utils.Const;
 import com.quynt.hethonghotrovanchuyen.utils.DialogUtils;
 import com.quynt.hethonghotrovanchuyen.utils.StringUtils;
 import com.squareup.okhttp.Callback;
@@ -28,7 +26,7 @@ import butterknife.OnClick;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
+ * <p/>
  * Created by QuyNT on 12/04/2016.
  */
 public class RegisterShipperActivity extends BaseActivity {
@@ -164,23 +162,25 @@ public class RegisterShipperActivity extends BaseActivity {
                     final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
 
                     if (!errorResponse.hasError()) {
-                        RegisterShipperResponse registerShipperResponse = new Gson().fromJson(body, RegisterShipperResponse.class);
-                        APIClient.getInstance().saveAccountType(RegisterShipperActivity.this, Const.SHIPPER);
-                        APIClient.getInstance().saveLoginAccount(RegisterShipperActivity.this, registerShipperResponse.getShipper());
-                        //goToHome();
+                        RegisterShipperActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                DialogUtils.showMessageDialog(RegisterShipperActivity.this, errorResponse.getMessage());
+                            }
+                        });
 
                         RegisterShipperActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                DialogUtils.showMessageDialog(RegisterShipperActivity.this, "Đăng Ký Thành Công");
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        goToHome();
+                                        RegisterShipperActivity.this.finish();
                                     }
                                 }, TIME_OUT);
                             }
                         });
+
                     } else {
                         RegisterShipperActivity.this.runOnUiThread(new Runnable() {
                             @Override

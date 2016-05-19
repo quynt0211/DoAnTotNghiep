@@ -104,6 +104,15 @@
             android:name=".activity.AccountOwnerWaitRegisterActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.AccountShipperWaitRegister"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.AccountShipperInSystemActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

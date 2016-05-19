@@ -10,7 +10,6 @@ import android.widget.EditText;
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
 import com.quynt.hethonghotrovanchuyen.model.response.ErrorResponse;
-import com.quynt.hethonghotrovanchuyen.model.response.RegisterOwnerResponse;
 import com.quynt.hethonghotrovanchuyen.utils.APIClient;
 import com.quynt.hethonghotrovanchuyen.utils.CommonUtils;
 import com.quynt.hethonghotrovanchuyen.utils.Const;
@@ -129,21 +128,21 @@ public class RegisterOwnerActivity extends BaseActivity {
                 final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
 
                 if (!errorResponse.hasError()) {
-                    RegisterOwnerResponse registerOwnerResponse = new Gson().fromJson(body, RegisterOwnerResponse.class);
-                    APIClient.getInstance().saveAccountType(RegisterOwnerActivity.this, Const.OWNER);
-                    APIClient.getInstance().saveLoginAccount(RegisterOwnerActivity.this, registerOwnerResponse.getOwner());
-                    Log.d("owneraccount", String.valueOf(APIClient.getOwnerAccount(RegisterOwnerActivity.this).getName()) + " name ");
                     RegisterOwnerActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            DialogUtils.showMessageDialog(RegisterOwnerActivity.this, "Đăng Ký Thành Công");
+                            DialogUtils.showMessageDialog(RegisterOwnerActivity.this, errorResponse.getMessage());
+                        }
+                    });
+                    RegisterOwnerActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    goToHome();
+                                    RegisterOwnerActivity.this.finish();
                                 }
-                            },TIME_OUT);
-
+                            }, TIME_OUT);
                         }
                     });
                 } else {

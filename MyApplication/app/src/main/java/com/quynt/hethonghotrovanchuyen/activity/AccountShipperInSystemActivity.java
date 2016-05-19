@@ -1,14 +1,15 @@
 package com.quynt.hethonghotrovanchuyen.activity;
 
 import android.app.Dialog;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
-import com.quynt.hethonghotrovanchuyen.adapter.AccounOwnerInSystemAdapter;
-import com.quynt.hethonghotrovanchuyen.model.Owner;
+import com.quynt.hethonghotrovanchuyen.adapter.AccountShipperInSystemAdapter;
+import com.quynt.hethonghotrovanchuyen.model.Shipper;
 import com.quynt.hethonghotrovanchuyen.model.response.ErrorResponse;
-import com.quynt.hethonghotrovanchuyen.model.response.OwnerAccountInSystemResponse;
+import com.quynt.hethonghotrovanchuyen.model.response.GetShippersResponse;
 import com.quynt.hethonghotrovanchuyen.utils.APIClient;
 import com.quynt.hethonghotrovanchuyen.utils.DialogUtils;
 import com.squareup.okhttp.Callback;
@@ -24,42 +25,43 @@ import butterknife.Bind;
 /**
  * He Thong Ho Tro Van Chuyen
  * <p/>
- * Created by QuyNT on 14/05/2016.
+ * Created by QuyNT on 18/05/2016.
  */
-public class AccountOwnerInSystemActivity extends BaseActivity implements AccounOwnerInSystemAdapter.OnButtonClickListenner {
-    @Bind(R.id.account_owner_in_system_list)
-    protected ListView mListAccount;
-    private AccounOwnerInSystemAdapter accounOwnerInSystemAdapter;
+public class AccountShipperInSystemActivity extends BaseActivity implements AccountShipperInSystemAdapter.OnButtonClickListenner {
+    @Bind(R.id.account_shipper_in_system_list)
+    ListView mAccountShipperInSystems;
+
+    AccountShipperInSystemAdapter accountShipperInSystemAdapter;
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_account_owner_in_system;
+        return R.layout.activity_account_shipper_in_system;
     }
-    // this is the comment of dev01
 
     @Override
     protected void initView() {
         initListView();
-        getOwnerAccount();
+        getShipper();
     }
 
     private void initListView() {
-        accounOwnerInSystemAdapter = new AccounOwnerInSystemAdapter(this);
-        accounOwnerInSystemAdapter.setOnButtonClickListenner(this);
-        mListAccount.setAdapter(accounOwnerInSystemAdapter);
+        accountShipperInSystemAdapter = new AccountShipperInSystemAdapter(this);
+        accountShipperInSystemAdapter.setOnButtonClickListenner(this);
+        mAccountShipperInSystems.setAdapter(accountShipperInSystemAdapter);
     }
 
-    private void getOwnerAccount() {
+    @Override
+    public void onBlockAccount(Shipper shipper) {
         final Dialog dialog = DialogUtils.showLoadingDialog(this);
         dialog.show();
 
         SortedMap<String, String> params = new TreeMap<>();
-        params.put("type", String.valueOf(2));
+        params.put("idshipper", String.valueOf(shipper.getId()));
 
-        APIClient.getInstance().execPost("getOwners", params, new Callback() {
+        APIClient.getInstance().execPost("blockShipper", params, new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                AccountOwnerInSystemActivity.this.runOnUiThread(new Runnable() {
+                AccountShipperInSystemActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         dialog.dismiss();
@@ -69,7 +71,7 @@ public class AccountOwnerInSystemActivity extends BaseActivity implements Accoun
 
             @Override
             public void onResponse(Response response) throws IOException {
-                AccountOwnerInSystemActivity.this.runOnUiThread(new Runnable() {
+                AccountShipperInSystemActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         dialog.dismiss();
@@ -78,42 +80,38 @@ public class AccountOwnerInSystemActivity extends BaseActivity implements Accoun
 
                 if (response.isSuccessful()) {
                     String body = response.body().string();
+                    Log.d("body_bl__in_system", body);
                     final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
-                    if (!errorResponse.hasError()) {
-                        final OwnerAccountInSystemResponse ownerAccountInSystemResponse = new Gson().fromJson(body, OwnerAccountInSystemResponse.class);
-                        AccountOwnerInSystemActivity.this.runOnUiThread(new Runnable() {
+                    AccountShipperInSystemActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            DialogUtils.showMessageDialog(AccountShipperInSystemActivity.this, errorResponse.getMessage());
+                        }
+                    });
+                    if(!errorResponse.hasError()){
+                        AccountShipperInSystemActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                accounOwnerInSystemAdapter.setOwners(ownerAccountInSystemResponse.getOwners());
-                            }
-                        });
-                    } else {
-                        AccountOwnerInSystemActivity.this.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                DialogUtils.showMessageDialog(AccountOwnerInSystemActivity.this, errorResponse.getMessage());
+                                getShipper();
                             }
                         });
                     }
                 }
             }
         });
-
     }
 
-
-    @Override
-    public void onBlockClick(Owner owner) {
+    private void getShipper() {
         final Dialog dialog = DialogUtils.showLoadingDialog(this);
         dialog.show();
 
         SortedMap<String, String> params = new TreeMap<>();
-        params.put("idowner", String.valueOf(owner.getId()));
+        params.put("type", String.valueOf(2));
 
-        APIClient.getInstance().execPost("blockOwner", params, new Callback() {
+        APIClient.getInstance().execPost("getShippers", params, new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
-                AccountOwnerInSystemActivity.this.runOnUiThread(new Runnable() {
+                AccountShipperInSystemActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         dialog.dismiss();
@@ -123,28 +121,30 @@ public class AccountOwnerInSystemActivity extends BaseActivity implements Accoun
 
             @Override
             public void onResponse(Response response) throws IOException {
-                AccountOwnerInSystemActivity.this.runOnUiThread(new Runnable() {
+                AccountShipperInSystemActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         dialog.dismiss();
                     }
                 });
-
                 if (response.isSuccessful()) {
                     String body = response.body().string();
+                    Log.d("body_shipper_in_system", body);
                     final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
-                    AccountOwnerInSystemActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            DialogUtils.showMessageDialog(AccountOwnerInSystemActivity.this, errorResponse.getMessage());
-                        }
-                    });
-
                     if (!errorResponse.hasError()) {
-                        AccountOwnerInSystemActivity.this.runOnUiThread(new Runnable() {
+                        final GetShippersResponse getShippersResponse = new Gson().fromJson(body, GetShippersResponse.class);
+                        AccountShipperInSystemActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                getOwnerAccount();
+                                accountShipperInSystemAdapter.setShippers(getShippersResponse.getShipper());
+                            }
+                        });
+
+                    } else {
+                        AccountShipperInSystemActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                DialogUtils.showMessageDialog(AccountShipperInSystemActivity.this, errorResponse.getMessage());
                             }
                         });
                     }

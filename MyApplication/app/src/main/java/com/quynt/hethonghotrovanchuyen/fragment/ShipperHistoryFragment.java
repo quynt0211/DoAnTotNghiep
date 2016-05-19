@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.quynt.hethonghotrovanchuyen.R;
@@ -28,13 +29,16 @@ import butterknife.Bind;
 
 /**
  * He Thong Ho Tro Van Chuyen
- * <p>
+ * <p/>
  * Created by QuyNT on 18/04/2016.
  */
 public class ShipperHistoryFragment extends BaseFragment implements ShipperHistoryAdapter.OnClickButtonListenner {
     @Bind(R.id.history_shipper)
     protected ListView mShipperHistory;
     ShipperHistoryAdapter shipperHistoryAdapter;
+
+    @Bind(R.id.shipper_history_no_history)
+    TextView mNoHistory;
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -92,8 +96,11 @@ public class ShipperHistoryFragment extends BaseFragment implements ShipperHisto
                             @Override
                             public void run() {
                                 int size = ownerHomeResponse.getPackage().size();
-                                if(size == 0 ){
-                                    DialogUtils.showMessageDialog(getBaseActivity(),  "Bạn Chưa Đi Giao Hàng");
+                                if (size == 0) {
+                                    //DialogUtils.showMessageDialog(getBaseActivity(),  "Bạn Chưa Đi Giao Hàng");
+                                    mNoHistory.setVisibility(View.VISIBLE);
+                                } else {
+                                    mNoHistory.setVisibility(View.GONE);
                                 }
                                 shipperHistoryAdapter.setPackages(ownerHomeResponse.getPackage());
                             }
@@ -208,7 +215,7 @@ public class ShipperHistoryFragment extends BaseFragment implements ShipperHisto
                 });
                 if (response.isSuccessful()) {
                     String body = response.body().string();
-                    Log.d("body_status",  body);
+                    Log.d("body_status", body);
                     final ErrorResponse errorResponse = new Gson().fromJson(body, ErrorResponse.class);
                     if (!errorResponse.hasError()) {
                         getBaseActivity().runOnUiThread(new Runnable() {
